@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeVoll Rubber Mfg Group — Custom Rubber Products Since 1964</title>
+<meta name="description" content="Family-owned custom rubber manufacturer in Victorville, CA since 1964. Gaskets, seals, extrusions, rollers, molded parts, lathe cutting, and waterjet machining.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  /* Palette: ivory skin, burnished steel, deep iron, raw umber gold */
+  --ivory:    #f5f0e8;
+  --ivory2:   #ede6d8;
+  --ivory3:   #e0d6c4;
+  --bone:     #cec3ae;
+  --steel:    #8c8880;
+  --steel2:   #6b6660;
+  --iron:     #2a2724;
+  --iron2:    #1e1c1a;
+  --void:     #131210;
+  --gold:     #b8922a;
+  --gold2:    #d4a93c;
+  --gold3:    #f0c860;
+  --gold-dim: #6b5218;
+  --warm-mid: #5a4f42;
+  --warm-lo:  #3d3530;
+
+  /* Functional */
+  --text:       var(--iron);
+  --text-lo:    var(--steel);
+  --text-mid:   var(--warm-mid);
+  --bg:         var(--ivory);
+  --bg2:        var(--ivory2);
+  --bg-dark:    var(--iron2);
+  --border:     rgba(44,39,36,0.12);
+  --border-hi:  rgba(44,39,36,0.22);
+  --border-gold:rgba(184,146,42,0.35);
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Jost', sans-serif;
+  --font-disp:  'Bebas Neue', sans-serif;
+
+  --shadow-sm:  0 1px 8px rgba(20,18,16,0.08);
+  --shadow-md:  0 4px 32px rgba(20,18,16,0.12);
+  --shadow-lg:  0 16px 64px rgba(20,18,16,0.18);
+  --gold-glow:  0 0 40px rgba(184,146,42,0.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+
+/* ── GRAIN TEXTURE OVERLAY ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 9000; pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* ── UTILS ── */
+.wrap { max-width: 1320px; margin: 0 auto; padding: 0 3rem; }
+.wrap-tight { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+
+.eyebrow {
+  font-family: var(--font-sans); font-weight: 400; font-size: 0.62rem;
+  letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold);
+  display: inline-flex; align-items: center; gap: 1rem;
+}
+.eyebrow::before {
+  content: ''; display: block; width: 28px; height: 1px;
+  background: var(--gold);
+}
+
+.sec-title {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  color: var(--iron); line-height: 1.12; margin-top: 0.8rem;
+}
+.sec-title em { font-style: italic; color: var(--gold); font-weight: 300; }
+.sec-title strong { font-weight: 500; }
+
+/* Horizontal rule with center diamond */
+.hr-diamond {
+  display: flex; align-items: center; gap: 1rem;
+  margin: 2rem 0; opacity: 0.3;
+}
+.hr-diamond::before, .hr-diamond::after {
+  content: ''; flex: 1; height: 1px; background: var(--iron);
+}
+.hr-diamond span {
+  width: 6px; height: 6px;
+  background: var(--gold); transform: rotate(45deg); flex-shrink: 0;
+}
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.7rem;
+  font-family: var(--font-sans); font-weight: 500; font-size: 0.68rem;
+  letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none;
+  border: none; cursor: pointer; transition: all 0.35s ease;
+  white-space: nowrap; position: relative;
+}
+.btn-primary {
+  background: var(--iron); color: var(--ivory); padding: 1rem 2.4rem;
+}
+.btn-primary:hover {
+  background: var(--void); box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+.btn-gold {
+  background: var(--gold); color: var(--ivory); padding: 1rem 2.4rem;
+}
+.btn-gold:hover {
+  background: var(--gold2);
+  box-shadow: 0 8px 32px rgba(184,146,42,0.35);
+  transform: translateY(-2px);
+}
+.btn-outline {
+  background: transparent; color: var(--iron); padding: 0.95rem 2.2rem;
+  border: 1px solid var(--border-hi);
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-outline-light {
+  background: transparent; color: var(--ivory); padding: 0.95rem 2.2rem;
+  border: 1px solid rgba(245,240,232,0.3);
+}
+.btn-outline-light:hover { border-color: var(--gold3); color: var(--gold3); }
+.btn-sm { padding: 0.7rem 1.6rem; font-size: 0.6rem; }
+
+/* Arrow decoration for buttons */
+.btn .arr { font-size: 0.9rem; transition: transform 0.3s; }
+.btn:hover .arr { transform: translateX(4px); }
+
+/* ── TOP BAR ── */
+.topbar {
+  background: var(--iron);
+  border-bottom: 1px solid rgba(184,146,42,0.2);
+  padding: 0.5rem 0; text-align: center;
+  font-family: var(--font-sans); font-size: 0.6rem;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(245,240,232,0.45);
+}
+.topbar strong { color: var(--gold2); font-weight: 500; }
+
+/* ── HEADER ── */
+header {
+  position: sticky; top: 0; z-index: 400;
+  background: rgba(245,240,232,0.96);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1320px; margin: 0 auto; padding: 1.1rem 3rem; gap: 2rem;
+}
+
+/* ── LOGO ── */
+.site-logo { text-decoration: none; display: flex; align-items: center; }
+
+nav.mainnav { display: flex; align-items: center; gap: 0; }
+.nav-a {
+  font-family: var(--font-sans); font-weight: 400; font-size: 0.65rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--warm-mid); text-decoration: none;
+  padding: 0.55rem 1rem; transition: color 0.2s; position: relative;
+}
+.nav-a:hover, .nav-a.active { color: var(--iron); }
+.nav-a.active::after {
+  content: ''; position: absolute; bottom: -1px; left: 1rem; right: 1rem;
+  height: 1px; background: var(--gold);
+}
+
+.nav-drop { position: relative; }
+.drop-menu {
+  display: none; position: absolute; top: calc(100% + 0.5rem); left: 0;
+  background: var(--ivory); border: 1px solid var(--border);
+  border-top: 2px solid var(--gold); min-width: 210px;
+  box-shadow: var(--shadow-lg); z-index: 300; padding: 0.5rem 0;
+}
+.nav-drop:hover .drop-menu { display: block; }
+.drop-menu a {
+  display: block; padding: 0.6rem 1.3rem;
+  font-family: var(--font-sans); font-size: 0.65rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--warm-mid); text-decoration: none; transition: all 0.15s;
+}
+.drop-menu a:hover { background: var(--ivory2); color: var(--iron); padding-left: 1.8rem; }
+
+.hdr-right { display: flex; gap: 0.75rem; align-items: center; }
+
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 94vh;
+  display: flex; align-items: stretch;
+  background: var(--void); overflow: hidden;
+}
+
+/* Left column: editorial ivory panel */
+.hero-left {
+  position: relative; z-index: 2; flex: 0 0 55%;
+  background: var(--ivory); display: flex; align-items: center;
+  padding: 7rem 5rem 7rem 3rem;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 60px) 100%, 0 100%);
+}
+
+/* Right column: dark industrial panel */
+.hero-right {
+  flex: 1; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-right-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 60% 40%, rgba(184,146,42,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 80% at 30% 80%, rgba(184,146,42,0.04) 0%, transparent 50%);
+  background-color: var(--iron2);
+}
+
+/* Hero grid texture */
+.hero-right-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(184,146,42,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184,146,42,0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+
+/* Decorative circles on right */
+.hero-circles {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.hero-circle {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(184,146,42,0.1);
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+.hero-circle:nth-child(1) { width: 240px; height: 240px; border-color: rgba(184,146,42,0.2); }
+.hero-circle:nth-child(2) { width: 380px; height: 380px; border-color: rgba(184,146,42,0.12); }
+.hero-circle:nth-child(3) { width: 520px; height: 520px; border-color: rgba(184,146,42,0.06); }
+.hero-circle:nth-child(4) { width: 660px; height: 660px; border-color: rgba(184,146,42,0.03); }
+/* Circle ornament dots */
+.hero-circle::before {
+  content: ''; position: absolute; width: 5px; height: 5px;
+  background: var(--gold); border-radius: 50%;
+  top: 0; left: 50%; transform: translateX(-50%);
+  opacity: 0.6;
+}
+.hero-circle:nth-child(1)::before { opacity: 0.9; }
+
+/* Center hex ornament */
+.hero-ornament {
+  position: relative; z-index: 2; text-align: center;
+}
+.hero-ornament-inner {
+  width: 160px; height: 160px; position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.ornament-hex {
+  position: absolute; inset: 0;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: 1px solid rgba(184,146,42,0.3);
+  background: rgba(184,146,42,0.04);
+}
+.ornament-hex::after {
+  content: '';
+  position: absolute; inset: 10px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: 1px solid rgba(184,146,42,0.15);
+  background: rgba(184,146,42,0.03);
+}
+.ornament-text {
+  position: relative; z-index: 1; text-align: center;
+}
+.ornament-year {
+  font-family: var(--font-disp); font-size: 2.2rem;
+  color: var(--gold); letter-spacing: 0.05em; line-height: 1;
+}
+.ornament-label {
+  font-family: var(--font-sans); font-size: 0.48rem;
+  letter-spacing: 0.3em; color: rgba(245,240,232,0.35);
+  text-transform: uppercase; margin-top: 0.2rem;
+}
+
+/* Hero vertical stats on right */
+.hero-stats-side {
+  position: absolute; right: 2.5rem; top: 50%;
+  transform: translateY(-50%); z-index: 3;
+  display: flex; flex-direction: column; gap: 2rem;
+}
+.hstat {
+  text-align: right;
+}
+.hstat-n {
+  font-family: var(--font-serif); font-weight: 300; font-size: 2.4rem;
+  color: var(--ivory); line-height: 1;
+}
+.hstat-n em { font-style: normal; color: var(--gold); }
+.hstat-l {
+  font-family: var(--font-sans); font-size: 0.5rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(245,240,232,0.3); margin-top: 0.15rem;
+}
+.hstat-rule {
+  width: 100%; height: 1px; background: rgba(184,146,42,0.2); margin-top: 1.5rem;
+}
+
+/* ── HERO CONTENT LEFT ── */
+.hero-content { max-width: 540px; }
+.hero-content .eyebrow { margin-bottom: 1.8rem; }
+
+.hero h1 {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: clamp(3.2rem, 6vw, 5.2rem);
+  line-height: 1.04; color: var(--iron); margin: 0 0 2rem;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero h1 .disp {
+  font-family: var(--font-disp);
+  font-size: clamp(3.8rem, 7vw, 6.2rem);
+  line-height: 0.9; letter-spacing: 0.02em; color: var(--iron);
+  display: block;
+}
+
+.hero-sub {
+  font-size: 0.96rem; font-weight: 300; color: var(--warm-mid);
+  max-width: 440px; line-height: 1.9; margin-bottom: 2.8rem;
+  border-left: 2px solid var(--gold); padding-left: 1.3rem;
+}
+.hero-sub strong { color: var(--iron); font-weight: 500; }
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* location tag */
+.location-tag {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  margin-bottom: 1.2rem;
+  font-family: var(--font-sans); font-size: 0.6rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--steel2);
+}
+.location-tag::before { content: '◆'; font-size: 0.45rem; color: var(--gold); }
+
+/* ── SPEC BAND ── */
+.spec-band {
+  background: var(--iron); border-bottom: 1px solid rgba(184,146,42,0.15);
+}
+.spec-inner {
+  display: flex; max-width: 1320px; margin: 0 auto;
+}
+.spec-item {
+  flex: 1; padding: 1.6rem 2.5rem;
+  border-right: 1px solid rgba(245,240,232,0.06);
+  display: flex; align-items: center; gap: 1.2rem;
+  transition: background 0.25s;
+}
+.spec-item:last-child { border-right: none; }
+.spec-item:hover { background: rgba(184,146,42,0.04); }
+.spec-n {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: 2rem; color: var(--gold); line-height: 1;
+  white-space: nowrap;
+}
+.spec-l {
+  font-family: var(--font-sans); font-size: 0.58rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(245,240,232,0.3); line-height: 1.5;
+}
+.spec-divider {
+  width: 1px; height: 28px; background: rgba(184,146,42,0.3);
+  flex-shrink: 0;
+}
+
+/* ── SECTION ── */
+.section { padding: 7rem 0; }
+.section-head { margin-bottom: 4.5rem; }
+.section-head.split {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+}
+
+/* ── ABOUT ── */
+.about-band {
+  background: var(--ivory);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: center;
+}
+.about-text .lead {
+  font-family: var(--font-serif); font-style: italic; font-weight: 300;
+  font-size: 1.35rem; color: var(--iron); line-height: 1.75;
+  margin: 1rem 0 2rem;
+}
+.about-text p { font-size: 0.94rem; color: var(--warm-mid); line-height: 1.95; margin-bottom: 1rem; }
+.about-text p strong { color: var(--iron); font-weight: 500; }
+
+.about-visual { position: relative; }
+.about-matrix {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--border);
+}
+.a-cell {
+  background: var(--ivory); padding: 2rem 1.8rem;
+  transition: background 0.25s; position: relative;
+}
+.a-cell::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  transform: scaleX(0); transition: transform 0.4s; transform-origin: left;
+}
+.a-cell:hover { background: var(--ivory2); }
+.a-cell:hover::after { transform: scaleX(1); }
+.a-cell:first-child {
+  grid-column: span 2;
+  background: var(--iron); padding: 2.5rem 2rem;
+}
+.a-cell:first-child::after { background: linear-gradient(90deg, var(--gold2), transparent); }
+.a-cell-num {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: 3.5rem; color: var(--gold); line-height: 1;
+}
+.a-cell-sub {
+  font-family: var(--font-sans); font-size: 0.52rem;
+  letter-spacing: 0.22em; color: rgba(245,240,232,0.3);
+  text-transform: uppercase; margin-top: 0.2rem;
+}
+.a-cell-label {
+  font-family: var(--font-sans); font-size: 0.6rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--steel); margin-bottom: 0.5rem;
+  transition: color 0.25s;
+}
+.a-cell:hover .a-cell-label { color: var(--gold); }
+.a-cell-desc { font-size: 0.82rem; color: var(--warm-mid); line-height: 1.65; }
+.a-cell-ico { font-size: 1.4rem; margin-bottom: 0.7rem; }
+
+/* ── CAPABILITIES ── */
+.capabilities { background: var(--bg2); }
+.cap-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+  gap: 0;
+}
+.cap-card {
+  padding: 2.8rem 2.2rem; transition: all 0.3s;
+  position: relative; overflow: hidden;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.cap-card:hover { background: var(--ivory); box-shadow: inset 0 0 0 1px rgba(184,146,42,0.2); }
+
+/* Gold reveal bar */
+.cap-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(to bottom, var(--gold), var(--gold2));
+  transform: scaleY(0); transition: transform 0.35s; transform-origin: top;
+}
+.cap-card:hover::before { transform: scaleY(1); }
+
+.cap-num {
+  font-family: var(--font-sans); font-size: 0.52rem;
+  letter-spacing: 0.3em; color: var(--gold-dim); margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+.cap-ico-line {
+  width: 32px; height: 2px; background: var(--gold);
+  margin-bottom: 1.5rem; opacity: 0.4;
+  transition: width 0.3s, opacity 0.3s;
+}
+.cap-card:hover .cap-ico-line { width: 48px; opacity: 1; }
+
+.cap-title {
+  font-family: var(--font-serif); font-weight: 500; font-size: 1.3rem;
+  color: var(--iron); margin-bottom: 0.8rem; line-height: 1.2;
+}
+.cap-card:hover .cap-title { color: var(--gold-dim); }
+.cap-desc { font-size: 0.85rem; color: var(--warm-mid); line-height: 1.8; }
+.cap-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-top: 1.5rem; font-family: var(--font-sans); font-weight: 500;
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none; transition: gap 0.25s;
+}
+.cap-link:hover { gap: 0.9rem; }
+
+/* ── MATERIALS ── */
+.materials { background: var(--iron); position: relative; overflow: hidden; }
+.materials::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 15% 50%, rgba(184,146,42,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 85% 30%, rgba(184,146,42,0.04) 0%, transparent 50%);
+}
+.materials .eyebrow { color: var(--gold2); }
+.materials .eyebrow::before { background: var(--gold2); }
+.materials .sec-title { color: var(--ivory); }
+
+.mat-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border: 1px solid rgba(245,240,232,0.06); gap: 0;
+  position: relative; z-index: 1;
+}
+.mat-card {
+  background: transparent; padding: 2rem 1.6rem;
+  border-right: 1px solid rgba(245,240,232,0.06);
+  border-bottom: 1px solid rgba(245,240,232,0.06);
+  transition: background 0.3s; position: relative;
+}
+.mat-card:hover { background: rgba(184,146,42,0.04); }
+.mat-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0); transition: transform 0.4s;
+}
+.mat-card:hover::after { transform: scaleX(1); }
+
+.mat-abbr {
+  font-family: var(--font-disp); font-size: 1.6rem;
+  color: var(--gold); letter-spacing: 0.05em; line-height: 1;
+  margin-bottom: 0.6rem;
+}
+.mat-name {
+  font-family: var(--font-serif); font-weight: 400; font-size: 0.95rem;
+  color: var(--ivory); margin-bottom: 0.6rem;
+}
+.mat-card:hover .mat-name { color: var(--gold3); }
+.mat-desc { font-size: 0.78rem; color: rgba(245,240,232,0.35); line-height: 1.7; }
+
+/* ── INDUSTRIES ── */
+.industries { background: var(--ivory2); }
+.ind-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border); gap: 0;
+}
+.ind-card {
+  padding: 2rem 1.5rem; transition: all 0.3s;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.ind-card:hover { background: var(--ivory); }
+.ind-num {
+  font-family: var(--font-disp); font-size: 2.8rem; color: rgba(44,39,36,0.05);
+  position: absolute; right: 0.8rem; top: 0.5rem; line-height: 1;
+  pointer-events: none;
+}
+.ind-ico { font-size: 1.6rem; margin-bottom: 0.9rem; display: block; }
+.ind-name {
+  font-family: var(--font-serif); font-weight: 500; font-size: 1.1rem;
+  color: var(--iron); margin-bottom: 0.5rem; line-height: 1.2;
+}
+.ind-card:hover .ind-name { color: var(--gold-dim); }
+.ind-desc { font-size: 0.78rem; color: var(--warm-mid); line-height: 1.7; }
+
+/* ── PROCESS ── */
+.process {
+  background: var(--void); position: relative; overflow: hidden;
+  border-top: 1px solid rgba(184,146,42,0.1);
+}
+.process .eyebrow { color: var(--gold2); }
+.process .eyebrow::before { background: var(--gold2); }
+.process .sec-title { color: var(--ivory); }
+
+/* Vertical timeline connector */
+.process-wrap { position: relative; }
+
+.process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; position: relative;
+  border: 1px solid rgba(245,240,232,0.05);
+}
+/* Connecting line */
+.process-steps::before {
+  content: ''; position: absolute; top: 50%; left: 0; right: 0;
+  height: 1px; background: linear-gradient(90deg, transparent, rgba(184,146,42,0.2), rgba(184,146,42,0.2), transparent);
+  pointer-events: none; z-index: 0;
+}
+
+.process-step {
+  padding: 3rem 2rem; position: relative; z-index: 1;
+  border-right: 1px solid rgba(245,240,232,0.05);
+  transition: background 0.3s;
+}
+.process-step:hover { background: rgba(184,146,42,0.03); }
+.process-step:last-child { border-right: none; }
+
+.proc-num {
+  font-family: var(--font-serif); font-weight: 300; font-style: italic;
+  font-size: 3.5rem; color: rgba(184,146,42,0.2); line-height: 1;
+  margin-bottom: 1.5rem; transition: color 0.3s;
+}
+.process-step:hover .proc-num { color: rgba(184,146,42,0.4); }
+.proc-title {
+  font-family: var(--font-serif); font-weight: 500; font-size: 1.1rem;
+  color: var(--ivory); margin-bottom: 0.8rem;
+}
+.proc-desc { font-size: 0.83rem; color: rgba(245,240,232,0.35); line-height: 1.8; }
+
+/* ── EQUIPMENT ── */
+.equipment { background: var(--ivory); border-top: 1px solid var(--border); }
+.equip-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 0; border: 1px solid var(--border);
+}
+.equip-card {
+  padding: 2.5rem; display: flex; gap: 2rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.25s; position: relative; overflow: hidden;
+}
+.equip-card::after {
+  content: ''; position: absolute; bottom: 0; left: 2.5rem; right: 2.5rem;
+  height: 1px; background: linear-gradient(90deg, var(--gold), transparent);
+  transform: scaleX(0); transition: transform 0.4s; transform-origin: left;
+}
+.equip-card:hover { background: var(--ivory2); }
+.equip-card:hover::after { transform: scaleX(1); }
+.equip-num {
+  font-family: var(--font-serif); font-style: italic; font-weight: 300;
+  font-size: 2rem; color: var(--bone); line-height: 1; flex-shrink: 0;
+  transition: color 0.25s;
+}
+.equip-card:hover .equip-num { color: var(--gold); }
+.equip-title {
+  font-family: var(--font-serif); font-weight: 500; font-size: 1.1rem;
+  color: var(--iron); margin-bottom: 0.5rem;
+}
+.equip-card:hover .equip-title { color: var(--gold-dim); }
+.equip-desc { font-size: 0.84rem; color: var(--warm-mid); line-height: 1.8; }
+
+/* ── TESTIMONIALS ── */
+.testimonials {
+  background: var(--ivory2);
+  border-top: 1px solid var(--border);
+}
+.testi-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; border: 1px solid var(--border);
+}
+.testi-card {
+  padding: 2.5rem 2rem; position: relative;
+  border-right: 1px solid var(--border);
+  transition: background 0.25s;
+}
+.testi-card:hover { background: var(--ivory); }
+.testi-card::before {
+  content: '\201C';
+  position: absolute; top: 1.2rem; right: 1.5rem;
+  font-family: var(--font-serif); font-size: 5rem; font-weight: 300;
+  color: rgba(44,39,36,0.06); line-height: 1;
+}
+.testi-stars { color: var(--gold2); font-size: 0.65rem; letter-spacing: 0.15em; margin-bottom: 1.2rem; }
+.testi-text {
+  font-family: var(--font-serif); font-style: italic; font-weight: 300;
+  font-size: 0.95rem; color: var(--warm-mid); line-height: 1.9; margin-bottom: 2rem;
+}
+.testi-author { display: flex; align-items: center; gap: 0.9rem; }
+.testi-av {
+  width: 38px; height: 38px; flex-shrink: 0;
+  background: var(--iron); display: flex; align-items: center;
+  justify-content: center; font-family: var(--font-sans); font-weight: 500;
+  font-size: 0.68rem; color: var(--gold); border: 1px solid rgba(184,146,42,0.3);
+}
+.testi-name {
+  font-family: var(--font-sans); font-weight: 500; font-size: 0.75rem;
+  color: var(--iron); letter-spacing: 0.08em; text-transform: uppercase;
+}
+.testi-co { font-size: 0.72rem; color: var(--steel); margin-top: 0.1rem; }
+
+/* ── QUOTE CTA ── */
+.quote-cta {
+  background: var(--iron); position: relative; overflow: hidden;
+  border-top: 1px solid rgba(184,146,42,0.15);
+}
+.quote-cta::before {
+  content: '';
+  position: absolute; top: -40%; right: -10%;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,146,42,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.quote-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 7rem;
+  align-items: start; padding: 7rem 0; position: relative; z-index: 1;
+}
+.quote-text .eyebrow { color: var(--gold2); }
+.quote-text .eyebrow::before { background: var(--gold2); }
+.quote-text .sec-title { color: var(--ivory); }
+.quote-text .lead {
+  font-family: var(--font-serif); font-style: italic;
+  font-size: 1rem; color: rgba(245,240,232,0.5); line-height: 1.9; margin: 1.2rem 0 2rem;
+}
+.check-list { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 2rem; }
+.check-item {
+  display: flex; align-items: center; gap: 1rem;
+  font-family: var(--font-sans); font-weight: 300; font-size: 0.82rem;
+  letter-spacing: 0.06em; color: rgba(245,240,232,0.45);
+}
+.check-item::before { content: '◆'; color: var(--gold); font-size: 0.45rem; flex-shrink: 0; }
+
+.quote-form-panel {
+  background: var(--ivory); padding: 3rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+}
+.qf-title {
+  font-family: var(--font-serif); font-weight: 500; font-size: 1.5rem;
+  color: var(--iron); margin-bottom: 0.3rem;
+}
+.qf-subtitle {
+  font-family: var(--font-sans); font-size: 0.58rem;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1.8rem; padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.qf-services {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.8rem;
+}
+.qf-svc {
+  font-family: var(--font-sans); font-size: 0.58rem; letter-spacing: 0.14em;
+  padding: 0.45rem 0.9rem; text-transform: uppercase; cursor: pointer;
+  background: transparent; color: var(--steel);
+  border: 1px solid var(--border); transition: all 0.25s;
+}
+.qf-svc:hover, .qf-svc.on {
+  background: var(--iron); color: var(--ivory);
+  border-color: var(--iron);
+}
+.qf-svc.on { border-color: var(--gold); background: rgba(184,146,42,0.08); color: var(--gold-dim); }
+
+.qf-label {
+  font-family: var(--font-sans); font-size: 0.55rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--steel); margin-bottom: 0.4rem;
+  display: block;
+}
+.qf-input {
+  width: 100%; background: transparent;
+  border: none; border-bottom: 1px solid var(--border);
+  color: var(--iron); font-family: var(--font-sans); font-weight: 300;
+  font-size: 0.9rem; padding: 0.75rem 0; margin-bottom: 1.2rem;
+  outline: none; transition: border-color 0.25s;
+}
+.qf-input::placeholder { color: var(--bone); font-size: 0.85rem; }
+.qf-input:focus { border-bottom-color: var(--gold); }
+
+/* ── FOOTER ── */
+footer.contact-band {
+  background: var(--void);
+  border-top: 1px solid rgba(184,146,42,0.1);
+  padding: 6rem 0 0;
+}
+.contact-grid {
+  display: grid; grid-template-columns: 1.4fr 0.9fr 1fr; gap: 5rem;
+  padding-bottom: 5rem;
+  border-bottom: 1px solid rgba(245,240,232,0.06);
+}
+.contact-brand p {
+  font-size: 0.88rem; font-weight: 300; color: rgba(245,240,232,0.3);
+  line-height: 1.95; max-width: 300px; margin: 1.3rem 0 1.8rem;
+}
+.contact-info { display: flex; flex-direction: column; gap: 0.8rem; }
+.contact-info a {
+  font-family: var(--font-sans); font-size: 0.7rem;
+  letter-spacing: 0.1em; color: rgba(245,240,232,0.3);
+  text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 0.6rem;
+}
+.contact-info a:hover { color: var(--gold2); }
+
+.ft-col h4 {
+  font-family: var(--font-sans); font-weight: 500; font-size: 0.58rem;
+  text-transform: uppercase; letter-spacing: 0.28em;
+  color: var(--gold); margin-bottom: 1.5rem;
+}
+.ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.ft-col li a {
+  font-family: var(--font-sans); font-size: 0.72rem; font-weight: 300;
+  letter-spacing: 0.08em; color: rgba(245,240,232,0.3);
+  text-decoration: none; transition: color 0.2s;
+}
+.ft-col li a:hover { color: var(--gold2); }
+
+.svc-links { display: flex; flex-direction: column; gap: 0.4rem; }
+.svc-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.55rem 0; font-family: var(--font-sans); font-size: 0.7rem;
+  letter-spacing: 0.08em; color: rgba(245,240,232,0.3);
+  text-decoration: none; transition: color 0.2s;
+  border-bottom: 1px solid rgba(245,240,232,0.04);
+}
+.svc-link:hover { color: var(--gold2); }
+.svc-arrow { font-size: 0.65rem; color: var(--gold-dim); transition: color 0.2s; }
+.svc-link:hover .svc-arrow { color: var(--gold); }
+
+.ft-soc { display: flex; gap: 0.5rem; margin-top: 1.2rem; }
+.soc {
+  width: 34px; height: 34px; border: 1px solid rgba(245,240,232,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(245,240,232,0.3); font-size: 0.75rem; font-family: var(--font-sans);
+  font-weight: 700; text-decoration: none; transition: all 0.25s;
+}
+.soc:hover { border-color: var(--gold); color: var(--gold2); }
+
+.footer-bot {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.5rem 0; flex-wrap: wrap; gap: 1rem;
+}
+.ft-copy {
+  font-family: var(--font-sans); font-size: 0.55rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(245,240,232,0.15);
+}
+
+/* ── PHOTO ELEMENTS ── */
+
+/* Hero right now uses a real photo */
+.hero-photo {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+}
+.hero-photo-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(19,18,16,0.75) 0%,
+    rgba(19,18,16,0.5) 50%,
+    rgba(30,28,26,0.7) 100%
+  );
+}
+
+/* About photo — replaces the matrix on right */
+.about-photo-col {
+  position: relative;
+}
+.about-photo-stack {
+  position: relative; height: 520px;
+}
+.about-photo-main {
+  position: absolute; top: 0; left: 0; right: 60px; bottom: 60px;
+  background-size: cover; background-position: center;
+  filter: grayscale(15%) contrast(1.05);
+}
+.about-photo-accent {
+  position: absolute; bottom: 0; right: 0; width: 55%; height: 55%;
+  background-size: cover; background-position: center;
+  border: 4px solid var(--ivory);
+  filter: grayscale(20%);
+}
+.about-photo-tag {
+  position: absolute; top: 2rem; left: -1.5rem; z-index: 2;
+  background: var(--gold); color: var(--ivory);
+  padding: 0.6rem 1.2rem;
+  font-family: var(--font-sans); font-weight: 500;
+  font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+  box-shadow: var(--shadow-md);
+}
+
+/* Capabilities card photos */
+.cap-card-photo {
+  width: 100%; height: 160px;
+  background-size: cover; background-position: center;
+  margin-bottom: 1.6rem;
+  filter: grayscale(25%) contrast(1.05);
+  transition: filter 0.4s;
+  overflow: hidden;
+  position: relative;
+}
+.cap-card-photo::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(237,230,216,0.8));
+}
+.cap-card:hover .cap-card-photo { filter: grayscale(0%) contrast(1.1); }
+
+/* Full-bleed photo band between sections */
+.photo-band {
+  height: 420px; position: relative; overflow: hidden;
+  background-size: cover; background-position: center 40%;
+  background-attachment: fixed;
+}
+.photo-band-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(19,18,16,0.85) 0%,
+    rgba(19,18,16,0.4) 50%,
+    rgba(19,18,16,0.2) 100%
+  );
+  display: flex; align-items: center;
+}
+.photo-band-content {
+  max-width: 1320px; margin: 0 auto; padding: 0 3rem; width: 100%;
+}
+.photo-band-quote {
+  font-family: var(--font-serif); font-style: italic; font-weight: 300;
+  font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--ivory);
+  max-width: 600px; line-height: 1.45;
+  border-left: 3px solid var(--gold); padding-left: 2rem;
+}
+.photo-band-sub {
+  margin-top: 1.2rem; padding-left: 2rem;
+  font-family: var(--font-sans); font-size: 0.65rem;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold2);
+}
+
+/* Gallery strip above testimonials */
+.gallery-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  height: 280px; overflow: hidden;
+}
+.gallery-thumb {
+  background-size: cover; background-position: center;
+  filter: grayscale(30%) contrast(1.05);
+  transition: filter 0.4s, transform 0.4s;
+  overflow: hidden; position: relative;
+}
+.gallery-thumb::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(19,18,16,0.25);
+  transition: background 0.4s;
+}
+.gallery-thumb:hover { filter: grayscale(0%) contrast(1.1); }
+.gallery-thumb:hover::after { background: rgba(19,18,16,0.05); }
+
+/* Materials section — add a subtle photo bg */
+.materials-photo-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0.04; filter: grayscale(100%);
+}
+
+/* Quote section photo background */
+.quote-cta-photo {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center 30%;
+  opacity: 0.06; filter: grayscale(100%);
+}
+
+/* ── SCROLL REVEAL ── */
+.sr { opacity: 0; transform: translateY(22px); transition: opacity 0.75s ease, transform 0.75s ease; }
+.sr.vis { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media(max-width: 1050px) {
+  nav.mainnav { display: none; }
+  .hero { flex-direction: column; min-height: auto; }
+  .hero-left { flex: none; width: 100%; clip-path: none; padding: 5rem 3rem 4rem; }
+  .hero-right { min-height: 300px; }
+  .hero-stats-side { display: none; }
+  .about-grid, .quote-inner, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .cap-grid, .ind-grid { grid-template-columns: 1fr 1fr; }
+  .mat-grid { grid-template-columns: 1fr 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .equip-grid { grid-template-columns: 1fr; }
+  .spec-inner { flex-wrap: wrap; }
+  .spec-item { min-width: 50%; }
+}
+@media(max-width: 640px) {
+  .cap-grid, .ind-grid, .mat-grid, .process-steps, .about-matrix { grid-template-columns: 1fr; }
+  .a-cell:first-child { grid-column: span 1; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .wrap, .wrap-tight { padding: 0 1.5rem; }
+  .hero-left { padding: 4rem 1.5rem 3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  Family-Owned &amp; Operated Since <strong>1964</strong> &nbsp;·&nbsp; Victorville, California &nbsp;·&nbsp; <strong>(760) 245-0590</strong>
+</div>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="site-logo" aria-label="DeVoll Rubber Mfg Group">
+      <svg width="210" height="46" viewBox="0 0 370 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#b8922a"/>
+            <stop offset="100%" stop-color="#8a6a1c"/>
+          </linearGradient>
+        </defs>
+        <!-- Refined emblem: thin circle with crosshairs -->
+        <circle cx="36" cy="36" r="28" stroke="url(#g1)" stroke-width="1"/>
+        <circle cx="36" cy="36" r="20" stroke="#b8922a" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.4"/>
+        <line x1="36" y1="8" x2="36" y2="64" stroke="#b8922a" stroke-width="0.5" opacity="0.25"/>
+        <line x1="8" y1="36" x2="64" y2="36" stroke="#b8922a" stroke-width="0.5" opacity="0.25"/>
+        <!-- Small diamond center -->
+        <rect x="33" y="33" width="6" height="6" transform="rotate(45 36 36)" fill="url(#g1)"/>
+        <!-- Wordmark -->
+        <text x="76" y="32" font-family="'Cormorant Garamond','Georgia',serif" font-weight="300" font-size="26" fill="#b8922a" letter-spacing="1" font-style="italic">De</text>
+        <text x="108" y="32" font-family="'Cormorant Garamond','Georgia',serif" font-weight="600" font-size="26" fill="#2a2724" letter-spacing="1">VOLL</text>
+        <line x1="76" y1="38" x2="222" y2="38" stroke="rgba(44,39,36,0.15)" stroke-width="0.75"/>
+        <text x="76" y="52" font-family="'Jost','sans-serif'" font-weight="300" font-size="9" fill="#8c8880" letter-spacing="3">RUBBER MFG GROUP, INC.</text>
+        <!-- Est mark -->
+        <line x1="228" y1="24" x2="228" y2="56" stroke="rgba(44,39,36,0.1)" stroke-width="1"/>
+        <text x="236" y="36" font-family="'Jost',sans-serif" font-size="7" fill="#b8922a" letter-spacing="1.5" font-weight="300">EST</text>
+        <text x="236" y="48" font-family="'Jost',sans-serif" font-size="9" fill="#6b5218" letter-spacing="1" font-weight="500">1964</text>
+      </svg>
+    </a>
+
+    <nav class="mainnav">
+      <a href="#" class="nav-a active">Home</a>
+      <div class="nav-drop">
+        <a href="#" class="nav-a">Capabilities ▾</a>
+        <div class="drop-menu">
+          <a href="#">Lathe Cutting</a>
+          <a href="#">Rubber Extrusions</a>
+          <a href="#">Molded Parts</a>
+          <a href="#">Industrial Rollers</a>
+          <a href="#">Waterjet Cutting</a>
+          <a href="#">Custom Gaskets &amp; Seals</a>
+        </div>
+      </div>
+      <div class="nav-drop">
+        <a href="#" class="nav-a">Materials ▾</a>
+        <div class="drop-menu">
+          <a href="#">Natural Rubber (NR)</a>
+          <a href="#">Neoprene (CR)</a>
+          <a href="#">EPDM</a>
+          <a href="#">Nitrile (NBR)</a>
+          <a href="#">Silicone</a>
+          <a href="#">Viton (FKM)</a>
+        </div>
+      </div>
+      <a href="#" class="nav-a">Industries</a>
+      <a href="#" class="nav-a">About</a>
+    </nav>
+
+    <div class="hdr-right">
+      <a href="#" class="btn btn-outline btn-sm">Download Spec Sheet</a>
+      <a href="#" class="btn btn-gold btn-sm">Get a Quote <span class="arr">→</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <!-- LEFT: ivory editorial panel -->
+  <div class="hero-left">
+    <div class="hero-content">
+      <div class="location-tag">Victorville, California</div>
+      <div class="eyebrow">Custom Precision Rubber Manufacturing</div>
+      <h1>
+        <span class="disp">DeVoll</span>
+        Built to<br><em>Exact Specification</em>
+      </h1>
+      <p class="hero-sub">
+        <strong>Family-owned since 1964.</strong> We manufacture custom rubber components — gaskets, seals, extrusions, rollers, molded parts, and waterjet-machined profiles — to your exact drawings, tolerances, and materials.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">Request a Quote <span class="arr">→</span></a>
+        <a href="#" class="btn btn-outline">Our Capabilities</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: photo panel -->
+  <div class="hero-right">
+    <div class="hero-photo" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&fit=crop&crop=center')"></div>
+    <div class="hero-photo-overlay"></div>
+    <div class="hero-circles">
+      <div class="hero-circle"></div>
+      <div class="hero-circle"></div>
+      <div class="hero-circle"></div>
+      <div class="hero-circle"></div>
+    </div>
+    <div class="hero-ornament">
+      <div class="hero-ornament-inner">
+        <div class="ornament-hex"></div>
+        <div class="ornament-text">
+          <div class="ornament-year">1964</div>
+          <div class="ornament-label">Est. Victorville</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats-side">
+      <div class="hstat">
+        <div class="hstat-n">60<em>+</em></div>
+        <div class="hstat-l">Years in<br>Operation</div>
+      </div>
+      <div class="hstat-rule"></div>
+      <div class="hstat">
+        <div class="hstat-n">No <em>MOQ</em></div>
+        <div class="hstat-l">Min. Order<br>Quantity</div>
+      </div>
+      <div class="hstat-rule"></div>
+      <div class="hstat">
+        <div class="hstat-n">6<em>+</em></div>
+        <div class="hstat-l">Core Mfg<br>Capabilities</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SPEC BAND ══ -->
+<div class="spec-band">
+  <div class="spec-inner">
+    <div class="spec-item">
+      <div class="spec-n">60+</div>
+      <div class="spec-divider"></div>
+      <div class="spec-l">Years of<br>Operation</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-n">6</div>
+      <div class="spec-divider"></div>
+      <div class="spec-l">Mfg<br>Capabilities</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-n">None</div>
+      <div class="spec-divider"></div>
+      <div class="spec-l">Min. Order<br>Quantity</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-n">10+</div>
+      <div class="spec-divider"></div>
+      <div class="spec-l">Industries<br>Served</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-n">CA</div>
+      <div class="spec-divider"></div>
+      <div class="spec-l">Domestic<br>Manufacturing</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<section class="section about-band">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text sr">
+        <div class="eyebrow">About DeVoll</div>
+        <h2 class="sec-title">Sixty Years of<br><em>Precision Craft</em></h2>
+        <p class="lead">We're not a portal. We're not a marketplace. We're a shop — family-owned, in Victorville, California, where skilled hands have been turning raw rubber into precision components since 1964.</p>
+        <p>DeVoll Rubber Mfg Group is a domestic manufacturer of custom rubber products serving industrial, commercial, and specialty markets across the United States. <strong>Every part we make is engineered to your exact specification</strong> — no off-the-shelf compromises, no overseas guesswork.</p>
+        <p>Our team combines decades of hands-on expertise with CNC waterjet and lathe capabilities. Whether you need a single prototype gasket or a full production run, you work directly with the people cutting your parts.</p>
+        <a href="#" class="btn btn-outline" style="margin-top: 1.8rem;">Our Story <span class="arr">→</span></a>
+      </div>
+      <div class="about-photo-col sr">
+        <div class="about-photo-stack">
+          <div class="about-photo-tag">Victorville, CA — Since 1964</div>
+          <div class="about-photo-main" style="background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=900&q=80&fit=crop')"></div>
+          <div class="about-photo-accent" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80&fit=crop')"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CAPABILITIES ══ -->
+<section class="section capabilities">
+  <div class="wrap">
+    <div class="section-head split sr">
+      <div>
+        <div class="eyebrow">Capabilities</div>
+        <h2 class="sec-title">What We<br><strong>Manufacture</strong></h2>
+      </div>
+      <a href="#" class="btn btn-outline">Full Capability Specs <span class="arr">→</span></a>
+    </div>
+    <div class="cap-grid sr">
+      <div class="cap-card">
+        <div class="cap-card-photo" style="background-image: url('https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=600&q=80&fit=crop&crop=center')"></div>
+        <div class="cap-num">001</div>
+        <div class="cap-ico-line"></div>
+        <div class="cap-title">Lathe Cutting</div>
+        <p class="cap-desc">Precision lathe-cut gaskets, washers, o-rings, bushings, and custom shapes from sheet or rod stock. Ideal for exact roundness and tight dimensional tolerances at any volume.</p>
+        <a href="#" class="cap-link">Specifications <span class="arr">→</span></a>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-photo" style="background-image: url('https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=600&q=80&fit=crop&crop=center')"></div>
+        <div class="cap-num">002</div>
+        <div class="cap-ico-line"></div>
+        <div class="cap-title">Rubber Extrusions</div>
+        <p class="cap-desc">Custom-profiled extruded rubber seals, tubing, cords, strips, and profiles in virtually any cross-section. Continuous lengths or cut-to-spec pieces, any durometer.</p>
+        <a href="#" class="cap-link">Specifications <span class="arr">→</span></a>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-photo" style="background-image: url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80&fit=crop')"></div>
+        <div class="cap-num">003</div>
+        <div class="cap-ico-line"></div>
+        <div class="cap-title">Molded Parts</div>
+        <p class="cap-desc">Compression, transfer, and injection molded rubber components for high-volume or complex geometries. We work from your drawings or assist in design for manufacturability.</p>
+        <a href="#" class="cap-link">Specifications <span class="arr">→</span></a>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-photo" style="background-image: url('https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=600&q=80&fit=crop&crop=center')"></div>
+        <div class="cap-num">004</div>
+        <div class="cap-ico-line"></div>
+        <div class="cap-title">Industrial Rollers</div>
+        <p class="cap-desc">Rubber-covered rollers for printing, converting, food processing, and industrial equipment. Custom OD, durometer, and surface finish. Recover and rebuild available.</p>
+        <a href="#" class="cap-link">Specifications <span class="arr">→</span></a>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-photo" style="background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&q=80&fit=crop')"></div>
+        <div class="cap-num">005</div>
+        <div class="cap-ico-line"></div>
+        <div class="cap-title">Waterjet Cutting</div>
+        <p class="cap-desc">CNC waterjet for complex profiles, cutouts, and multi-layer composites without heat distortion. Perfect for thick materials, intricate shapes, or parts where tooling is cost-prohibitive.</p>
+        <a href="#" class="cap-link">Specifications <span class="arr">→</span></a>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-photo" style="background-image: url('https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80&fit=crop')"></div>
+        <div class="cap-num">006</div>
+        <div class="cap-ico-line"></div>
+        <div class="cap-title">Gaskets &amp; Seals</div>
+        <p class="cap-desc">Full-service gasket manufacturing — cut, molded, or die-cut — in any compound. Sheet gaskets, flange gaskets, ring gaskets, custom seals. Spec matching included.</p>
+        <a href="#" class="cap-link">Specifications <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MATERIALS ══ -->
+<section class="section materials">
+  <div class="wrap">
+    <div class="section-head split sr">
+      <div>
+        <div class="eyebrow" style="color:var(--gold2)">Polymer Database</div>
+        <h2 class="sec-title" style="color:var(--ivory)">Material<br><em>Compounds</em></h2>
+      </div>
+      <a href="#" class="btn btn-outline-light btn-sm">Full Polymer Guide <span class="arr">→</span></a>
+    </div>
+    <div class="mat-grid sr">
+      <div class="mat-card">
+        <div class="mat-abbr">NR</div>
+        <div class="mat-name">Natural Rubber</div>
+        <p class="mat-desc">Exceptional elasticity, resilience, and tensile strength. Ideal for vibration isolation, shock absorbers, and dynamic applications requiring high elongation.</p>
+      </div>
+      <div class="mat-card">
+        <div class="mat-abbr">CR</div>
+        <div class="mat-name">Neoprene</div>
+        <p class="mat-desc">Outstanding weather, ozone, and flame resistance with good mechanical properties. Widely used in outdoor sealing, electrical insulation, and marine environments.</p>
+      </div>
+      <div class="mat-card">
+        <div class="mat-abbr">EPDM</div>
+        <div class="mat-name">EPDM</div>
+        <p class="mat-desc">Superior UV, ozone, heat, and steam resistance. The workhorse for roofing, automotive weatherstripping, and water/steam sealing up to 300°F.</p>
+      </div>
+      <div class="mat-card">
+        <div class="mat-abbr">NBR</div>
+        <div class="mat-name">Nitrile</div>
+        <p class="mat-desc">Excellent resistance to petroleum-based oils, fuels, and hydraulic fluids. Essential for oil seals, fuel system components, and hydraulic applications.</p>
+      </div>
+      <div class="mat-card">
+        <div class="mat-abbr">VMQ</div>
+        <div class="mat-name">Silicone</div>
+        <p class="mat-desc">Extreme temperature range (−80°F to +450°F), outstanding biocompatibility. Used in food processing, medical, aerospace, and high-temperature sealing.</p>
+      </div>
+      <div class="mat-card">
+        <div class="mat-abbr">FKM</div>
+        <div class="mat-name">Viton®</div>
+        <p class="mat-desc">Industry-leading resistance to fuels, solvents, chemicals, and high heat up to 400°F continuous. Premium choice for critical chemical and aerospace sealing.</p>
+      </div>
+      <div class="mat-card">
+        <div class="mat-abbr">SBR</div>
+        <div class="mat-name">SBR</div>
+        <p class="mat-desc">Cost-effective general-purpose compound. Good abrasion resistance and aging properties for wear pads, conveyor components, and sheet stock applications.</p>
+      </div>
+      <div class="mat-card">
+        <div class="mat-abbr">IIR</div>
+        <div class="mat-name">Butyl</div>
+        <p class="mat-desc">Exceptional impermeability to gases and moisture. Used in inner tubes, air barriers, chemical tank linings, and vibration damping applications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PHOTO BAND ══ -->
+<div class="photo-band sr" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1800&q=80&fit=crop&crop=center')">
+  <div class="photo-band-overlay">
+    <div class="photo-band-content">
+      <div class="photo-band-quote">
+        "Every part we ship left our hands. That's not a slogan — it's sixty years of accountability."
+      </div>
+      <div class="photo-band-sub">DeVoll Rubber Mfg Group — Victorville, California</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INDUSTRIES ══ -->
+<section class="section industries">
+  <div class="wrap">
+    <div class="section-head sr">
+      <div class="eyebrow">Sector Coverage</div>
+      <h2 class="sec-title">Industries <em>Served</em></h2>
+    </div>
+    <div class="ind-grid sr">
+      <div class="ind-card">
+        <div class="ind-num">01</div>
+        <span class="ind-ico">✈</span>
+        <div class="ind-name">Aerospace &amp; Defense</div>
+        <p class="ind-desc">Mil-spec seals, vibration isolation, and precision gaskets for critical aerospace systems.</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-num">02</div>
+        <span class="ind-ico">⚙</span>
+        <div class="ind-name">Automotive</div>
+        <p class="ind-desc">Engine seals, weatherstripping, vibration dampers, and custom fluid system components.</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-num">03</div>
+        <span class="ind-ico">◧</span>
+        <div class="ind-name">Industrial OEM</div>
+        <p class="ind-desc">Custom components for machinery, equipment sealing, and manufacturing operations.</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-num">04</div>
+        <span class="ind-ico">⚗</span>
+        <div class="ind-name">Chemical Processing</div>
+        <p class="ind-desc">Chemical-resistant Viton and specialty compound gaskets for aggressive process environments.</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-num">05</div>
+        <span class="ind-ico">◈</span>
+        <div class="ind-name">Food &amp; Beverage</div>
+        <p class="ind-desc">FDA-compliant silicone and EPDM seals for food-grade processing and packaging equipment.</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-num">06</div>
+        <span class="ind-ico">◇</span>
+        <div class="ind-name">Pharmaceutical</div>
+        <p class="ind-desc">USP-compliant elastomers for clean room, sterile processing, and drug manufacturing.</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-num">07</div>
+        <span class="ind-ico">◉</span>
+        <div class="ind-name">Oil &amp; Gas</div>
+        <p class="ind-desc">Nitrile and Viton seals engineered for petroleum products, pressure, and elevated heat.</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-num">08</div>
+        <span class="ind-ico">▦</span>
+        <div class="ind-name">Construction</div>
+        <p class="ind-desc">Expansion joints, HVAC gaskets, weather seals, and structural bearing pads.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROCESS ══ -->
+<section class="section process">
+  <div class="wrap">
+    <div class="section-head sr">
+      <div class="eyebrow">Workflow</div>
+      <h2 class="sec-title">From <em>Specification</em><br>to Delivery</h2>
+    </div>
+    <div class="process-steps sr">
+      <div class="process-step">
+        <div class="proc-num">i.</div>
+        <div class="proc-title">Submit Your Specification</div>
+        <p class="proc-desc">Send us a drawing, sample part, or description. We review every inquiry and respond with questions or a preliminary assessment — usually same day.</p>
+      </div>
+      <div class="process-step">
+        <div class="proc-num">ii.</div>
+        <div class="proc-title">Engineering Review</div>
+        <p class="proc-desc">Our team evaluates your application, material requirements, tolerances, and volume. We may recommend alternatives to improve performance or cost.</p>
+      </div>
+      <div class="process-step">
+        <div class="proc-num">iii.</div>
+        <div class="proc-title">Quote &amp; Lead Time</div>
+        <p class="proc-desc">You receive a clear, competitive quote with an honest lead time. No hidden fees, no bait-and-switch pricing. Prototype and production volumes both quoted.</p>
+      </div>
+      <div class="process-step">
+        <div class="proc-num">iv.</div>
+        <div class="proc-title">Manufacture &amp; Ship</div>
+        <p class="proc-desc">Parts are produced in our Victorville shop and shipped to your facility. Inspection documentation available upon request.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EQUIPMENT ══ -->
+<section class="section equipment">
+  <div class="wrap">
+    <div class="section-head split sr">
+      <div>
+        <div class="eyebrow">Facility</div>
+        <h2 class="sec-title">Equipment &amp;<br><em>Infrastructure</em></h2>
+      </div>
+    </div>
+    <div class="equip-grid sr">
+      <div class="equip-card">
+        <div class="equip-num">I.</div>
+        <div>
+          <div class="equip-title">CNC Lathe Systems</div>
+          <p class="equip-desc">Multiple CNC and manual lathes capable of cutting gaskets, washers, rings, and complex rotational forms from sheet, rod, or tube stock in any compound. Capacity from miniature o-rings to large-diameter industrial parts.</p>
+        </div>
+      </div>
+      <div class="equip-card">
+        <div class="equip-num">II.</div>
+        <div>
+          <div class="equip-title">Waterjet Cutting Cell</div>
+          <p class="equip-desc">High-pressure abrasive waterjet system for complex profiles and thick-section cutting without heat-affected zones. Suitable for rubber, cork, fiberglass, composites, and laminated materials.</p>
+        </div>
+      </div>
+      <div class="equip-card">
+        <div class="equip-num">III.</div>
+        <div>
+          <div class="equip-title">Compression &amp; Transfer Molding</div>
+          <p class="equip-desc">Hydraulic molding presses for compression and transfer molding of custom rubber parts. Multi-cavity tooling available. We can mold to your existing tooling or assist with tool design.</p>
+        </div>
+      </div>
+      <div class="equip-card">
+        <div class="equip-num">IV.</div>
+        <div>
+          <div class="equip-title">Die Cutting &amp; Fabrication</div>
+          <p class="equip-desc">Steel-rule and rotary die cutting for gaskets and flat seals from sheet goods. Slitting, skiving, buffing, and secondary fabrication operations performed in-house.</p>
+        </div>
+      </div>
+      <div class="equip-card">
+        <div class="equip-num">V.</div>
+        <div>
+          <div class="equip-title">Extrusion Lines</div>
+          <p class="equip-desc">Custom rubber extrusion for cords, tubing, seals, and complex profiles in continuous or cut lengths. Multiple durometers and compounds. Vulcanization and post-cure on-site.</p>
+        </div>
+      </div>
+      <div class="equip-card">
+        <div class="equip-num">VI.</div>
+        <div>
+          <div class="equip-title">Roller Covering Shop</div>
+          <p class="equip-desc">Full-service rubber roller covering, grinding, and reconditioning. Bonding, sleeve fitting, and precision OD grinding to specification. Re-covering of existing rollers available.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY STRIP ══ -->
+<div class="gallery-strip">
+  <div class="gallery-thumb" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=75&fit=crop&crop=center')"></div>
+  <div class="gallery-thumb" style="background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=75&fit=crop&crop=center')"></div>
+  <div class="gallery-thumb" style="background-image: url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=75&fit=crop')"></div>
+  <div class="gallery-thumb" style="background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&q=75&fit=crop')"></div>
+</div>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="section testimonials">
+  <div class="wrap">
+    <div class="section-head split sr">
+      <div>
+        <div class="eyebrow">Clients</div>
+        <h2 class="sec-title">What Our<br><em>Customers Say</em></h2>
+      </div>
+      <a href="#" class="btn btn-outline btn-sm">Read All Reviews <span class="arr">→</span></a>
+    </div>
+    <div class="testi-grid sr">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">DeVoll has been our go-to rubber supplier for over 15 years. Their lathe-cut gaskets consistently hit our tolerances and their lead times are always reliable. Family business feel — they actually know your name.</p>
+        <div class="testi-author">
+          <div class="testi-av">JM</div>
+          <div>
+            <div class="testi-name">James M.</div>
+            <div class="testi-co">Maintenance Supervisor — Industrial OEM</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">We needed a very specific Viton compound gasket for a chemical application. DeVoll not only matched the spec perfectly, they recommended a formulation we hadn't even considered that worked better. That's real expertise.</p>
+        <div class="testi-author">
+          <div class="testi-av">SR</div>
+          <div>
+            <div class="testi-name">Sandra R.</div>
+            <div class="testi-co">Process Engineer — Chemical Plant</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Their waterjet cutting capability has been a game-changer for us. Complex profiles that used to require expensive tooling we can now get cut accurately and affordably. Turnaround is excellent.</p>
+        <div class="testi-author">
+          <div class="testi-av">DK</div>
+          <div>
+            <div class="testi-name">Dave K.</div>
+            <div class="testi-co">Purchasing Manager — Aerospace Supplier</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ QUOTE CTA ══ -->
+<section class="quote-cta">
+  <div class="wrap">
+    <div class="quote-inner">
+      <div class="quote-text sr">
+        <div class="eyebrow">Start Your Project</div>
+        <h2 class="sec-title">Ready to Get<br><em>Parts Made?</em></h2>
+        <p class="lead">We quote every job — no minimum quantity, no run too small or too large. Tell us what you need and we'll respond fast with a competitive price and honest lead time.</p>
+        <div class="check-list">
+          <div class="check-item">No minimum order quantity</div>
+          <div class="check-item">Prototype to production volumes</div>
+          <div class="check-item">Custom compound development available</div>
+          <div class="check-item">Fast turnaround from our California shop</div>
+          <div class="check-item">Direct access to the engineers making your parts</div>
+        </div>
+      </div>
+      <div class="quote-form-panel sr">
+        <div class="qf-title">Request a Quote</div>
+        <div class="qf-subtitle">Select Service(s) &amp; Submit</div>
+        <div class="qf-services">
+          <button class="qf-svc" onclick="this.classList.toggle('on')">Lathe Cutting</button>
+          <button class="qf-svc" onclick="this.classList.toggle('on')">Extrusions</button>
+          <button class="qf-svc" onclick="this.classList.toggle('on')">Molded Parts</button>
+          <button class="qf-svc" onclick="this.classList.toggle('on')">Rollers</button>
+          <button class="qf-svc" onclick="this.classList.toggle('on')">Waterjet</button>
+          <button class="qf-svc" onclick="this.classList.toggle('on')">Gaskets &amp; Seals</button>
+        </div>
+        <input class="qf-input" type="text" placeholder="Your Name">
+        <input class="qf-input" type="text" placeholder="Company Name">
+        <input class="qf-input" type="email" placeholder="Email Address">
+        <input class="qf-input" type="tel" placeholder="Phone Number">
+        <textarea class="qf-input" rows="3" placeholder="Describe your part or application..." style="resize:vertical;"></textarea>
+        <a href="#" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:0.75rem;">Submit Request <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="contact-band">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-brand">
+        <svg width="170" height="44" viewBox="0 0 370 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="36" cy="36" r="28" stroke="rgba(184,146,42,0.4)" stroke-width="1"/>
+          <circle cx="36" cy="36" r="20" stroke="rgba(184,146,42,0.15)" stroke-width="0.5" stroke-dasharray="3 3"/>
+          <rect x="33" y="33" width="6" height="6" transform="rotate(45 36 36)" fill="rgba(184,146,42,0.6)"/>
+          <text x="76" y="32" font-family="'Cormorant Garamond','Georgia',serif" font-weight="300" font-size="26" fill="rgba(184,146,42,0.5)" letter-spacing="1" font-style="italic">De</text>
+          <text x="108" y="32" font-family="'Cormorant Garamond','Georgia',serif" font-weight="600" font-size="26" fill="rgba(245,240,232,0.6)" letter-spacing="1">VOLL</text>
+          <line x1="76" y1="38" x2="222" y2="38" stroke="rgba(245,240,232,0.08)" stroke-width="0.75"/>
+          <text x="76" y="52" font-family="'Jost','sans-serif'" font-weight="300" font-size="9" fill="rgba(245,240,232,0.2)" letter-spacing="3">RUBBER MFG GROUP, INC.</text>
+        </svg>
+        <p>Family-owned precision rubber manufacturer serving California and the nation since 1964. From our shop in Victorville to your facility — built to spec, built to last.</p>
+        <div class="contact-info">
+          <a href="tel:7602450590">→ (760) 245-0590</a>
+          <a href="mailto:info@devollrubber.com">→ info@devollrubber.com</a>
+          <a href="#">→ Victorville, California</a>
+        </div>
+        <div class="ft-soc">
+          <a href="https://www.facebook.com/DeVoll-Rubber-MFG-153860087987384/" class="soc">f</a>
+        </div>
+      </div>
+
+      <div class="ft-col">
+        <h4>Capabilities</h4>
+        <div class="svc-links">
+          <a href="#" class="svc-link">Lathe Cutting <span class="svc-arrow">→</span></a>
+          <a href="#" class="svc-link">Rubber Extrusions <span class="svc-arrow">→</span></a>
+          <a href="#" class="svc-link">Industrial Rollers <span class="svc-arrow">→</span></a>
+          <a href="#" class="svc-link">Waterjet Cutting <span class="svc-arrow">→</span></a>
+          <a href="#" class="svc-link">Molded Parts <span class="svc-arrow">→</span></a>
+          <a href="#" class="svc-link">Gaskets &amp; Seals <span class="svc-arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="ft-col">
+        <h4>Quick Quote</h4>
+        <p style="font-size:.82rem;font-weight:300;color:rgba(245,240,232,.3);line-height:1.9;margin-bottom:1.2rem;">Ready to get your parts manufactured? We respond to every quote request.</p>
+        <div style="display:flex;flex-direction:column;gap:.5rem;">
+          <a href="#" class="btn btn-gold btn-sm" style="justify-content:center;">Get a Quote →</a>
+          <a href="#" class="btn btn-outline-light btn-sm" style="justify-content:center;">Download Spec Sheet</a>
+        </div>
+        <div style="margin-top:2rem;">
+          <h4>Company</h4>
+          <ul style="margin-top:.8rem;">
+            <li><a href="#">About DeVoll</a></li>
+            <li><a href="#">Our Equipment</a></li>
+            <li><a href="#">Polymer Guide</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bot">
+      <span class="ft-copy">© 2026 DeVoll Rubber Mfg Group, Inc · Victorville, CA · devollrubber.com</span>
+      <span class="ft-copy">Family-owned since 1964 · All rights reserved</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.sr').forEach(el => obs.observe(el));
+
+// Stagger child elements of grids
+document.querySelectorAll('.cap-grid, .mat-grid, .ind-grid, .testi-grid, .equip-grid, .process-steps, .about-matrix').forEach(grid => {
+  Array.from(grid.children).forEach((child, i) => {
+    child.style.transitionDelay = (i * 0.07) + 's';
+    if (!child.classList.contains('sr')) {
+      child.classList.add('sr');
+      obs.observe(child);
+    }
+  });
+});
+
+// Spec counter animation
+const specNums = document.querySelectorAll('.spec-n');
+const cObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const raw = el.textContent.trim();
+    const num = parseFloat(raw);
+    if (!isNaN(num) && num > 1) {
+      const suffix = raw.replace(/[\d.]/g, '');
+      let start = performance.now();
+      const dur = 1400;
+      (function tick(now) {
+        const t = Math.min((now - start) / dur, 1);
+        const ease = 1 - Math.pow(1 - t, 4);
+        el.textContent = Math.round(ease * num) + suffix;
+        if (t < 1) requestAnimationFrame(tick);
+      })(start);
+    }
+    cObs.unobserve(el);
+  });
+}, { threshold: 0.5 });
+specNums.forEach(n => cObs.observe(n));
+</script>
+</body>
+</html>

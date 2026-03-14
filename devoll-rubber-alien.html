@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeVoll Rubber Mfg Group — Custom Rubber Products Since 1964</title>
+<meta name="description" content="Family-owned custom rubber manufacturer in Victorville, CA since 1964. Gaskets, seals, extrusions, rollers, molded parts, lathe cutting, and waterjet machining.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --void:     #020408;
+  --deep:     #060d10;
+  --panel:    #0a1520;
+  --panel2:   #0d1e2c;
+  --panel3:   #112030;
+  --rim:      #0e2233;
+  --plasma:   #00e5ff;
+  --plasma2:  #00b8d4;
+  --plasma3:  #006d82;
+  --acid:     #39ff6a;
+  --acid2:    #1adb4e;
+  --acid3:    #0a5c23;
+  --amber:    #ffb700;
+  --amber2:   #ff8c00;
+  --text:     #c8e8f0;
+  --text-lo:  #4a7a8a;
+  --text-mid: #7ab0c0;
+  --white:    #e8f6fa;
+  --grid:     rgba(0,229,255,0.04);
+  --grid2:    rgba(0,229,255,0.025);
+  --glow-p:   0 0 20px rgba(0,229,255,0.4), 0 0 60px rgba(0,229,255,0.15);
+  --glow-a:   0 0 20px rgba(57,255,106,0.4), 0 0 60px rgba(57,255,106,0.12);
+  --glow-am:  0 0 20px rgba(255,183,0,0.4), 0 0 60px rgba(255,183,0,0.12);
+  --font-disp:'Orbitron', sans-serif;
+  --font-body:'Syne', sans-serif;
+  --font-mono:'Space Mono', monospace;
+  --border-p: 1px solid rgba(0,229,255,0.2);
+  --border-a: 1px solid rgba(57,255,106,0.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  overflow-x: hidden;
+  line-height: 1.65;
+  cursor: none;
+}
+
+/* ── CUSTOM CURSOR ── */
+.cursor {
+  position: fixed; width: 12px; height: 12px;
+  border: 1px solid var(--plasma); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transition: transform 0.1s ease, opacity 0.2s;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+}
+.cursor-ring {
+  position: fixed; width: 32px; height: 32px;
+  border: 1px solid rgba(0,229,255,0.4); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transition: transform 0.25s ease, width 0.2s, height 0.2s;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+}
+
+/* ── SCAN LINE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 9000; pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+}
+
+/* ── GLOBAL GRID BACKGROUND ── */
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    linear-gradient(var(--grid2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid2) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+}
+
+/* ── UTILS ── */
+.wrap { max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; }
+
+.glyph {
+  font-family: var(--font-mono); font-size: 0.6rem;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--plasma); display: inline-flex; align-items: center; gap: 0.8rem;
+}
+.glyph::before {
+  content: '//'; color: var(--plasma3); font-size: 0.7rem;
+}
+
+.sec-title {
+  font-family: var(--font-disp); font-weight: 700;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  color: var(--white); line-height: 1.1;
+  letter-spacing: 0.05em; margin-top: 0.75rem;
+}
+.sec-title em { color: var(--plasma); font-style: normal; }
+.sec-title .acid { color: var(--acid); }
+
+/* ── PLASMA LINE ── */
+.plasma-line {
+  height: 1px; background: linear-gradient(90deg, transparent, var(--plasma), var(--plasma2), transparent);
+  opacity: 0.5;
+}
+
+/* ── CORNER BRACKETS ── */
+.bracket {
+  position: relative;
+}
+.bracket::before, .bracket::after {
+  content: ''; position: absolute;
+  width: 12px; height: 12px;
+  border-color: var(--plasma); border-style: solid;
+  opacity: 0.6;
+}
+.bracket::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+.bracket::after  { top: -1px; right: -1px; border-width: 1px 1px 0 0; }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--font-disp); font-weight: 600; font-size: 0.7rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: none;
+  transition: all 0.3s ease; white-space: nowrap; position: relative;
+  overflow: hidden;
+}
+.btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
+  transform: translateX(-100%); transition: transform 0.5s ease;
+}
+.btn:hover::before { transform: translateX(100%); }
+
+.btn-plasma {
+  background: transparent; color: var(--plasma);
+  border: 1px solid var(--plasma); padding: 0.9rem 2rem;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+.btn-plasma:hover {
+  background: rgba(0,229,255,0.1);
+  box-shadow: var(--glow-p);
+  color: #fff;
+}
+.btn-acid {
+  background: var(--acid); color: #020408;
+  padding: 0.9rem 2rem;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+.btn-acid:hover { background: #7fff9e; box-shadow: var(--glow-a); }
+.btn-ghost {
+  background: transparent; color: var(--text-mid);
+  border: 1px solid rgba(0,229,255,0.12); padding: 0.9rem 2rem;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+.btn-ghost:hover { border-color: var(--plasma); color: var(--plasma); }
+.btn-sm { padding: 0.6rem 1.3rem; font-size: 0.62rem; }
+
+/* ── TOP BAR ── */
+.topbar {
+  background: var(--acid3); border-bottom: 1px solid rgba(57,255,106,0.2);
+  padding: 0.45rem 0; text-align: center;
+  font-family: var(--font-mono); font-size: 0.6rem;
+  letter-spacing: 0.2em; color: var(--acid2);
+  position: relative; overflow: hidden;
+}
+.topbar::before {
+  content: '';
+  position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(57,255,106,0.1), transparent);
+  animation: topbar-scan 4s linear infinite;
+}
+@keyframes topbar-scan { to { left: 100%; } }
+.topbar strong { color: var(--acid); }
+
+/* ── HEADER ── */
+header {
+  position: sticky; top: 0; z-index: 400;
+  background: rgba(2, 4, 8, 0.9);
+  border-bottom: 1px solid rgba(0,229,255,0.15);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1320px; margin: 0 auto; padding: 1rem 2.5rem; gap: 2rem;
+}
+
+/* ── LOGO ── */
+.site-logo { text-decoration: none; display: flex; align-items: center; }
+
+nav.mainnav { display: flex; align-items: center; gap: 0; }
+.nav-a {
+  font-family: var(--font-mono); font-weight: 400; font-size: 0.68rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--text-lo); text-decoration: none;
+  padding: 0.6rem 1rem; transition: color 0.2s; position: relative;
+}
+.nav-a:hover, .nav-a.active { color: var(--plasma); }
+.nav-a.active::after {
+  content: ''; position: absolute; bottom: 0; left: 1rem; right: 1rem;
+  height: 1px; background: var(--plasma);
+  box-shadow: var(--glow-p);
+}
+
+.nav-drop { position: relative; }
+.drop-menu {
+  display: none; position: absolute; top: calc(100% + 0.5rem); left: 0;
+  background: var(--panel); border: 1px solid rgba(0,229,255,0.15);
+  border-top: 1px solid var(--plasma); min-width: 220px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8), var(--glow-p);
+  z-index: 300; padding: 0.5rem 0;
+}
+.nav-drop:hover .drop-menu { display: block; }
+.drop-menu a {
+  display: block; padding: 0.6rem 1.3rem;
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em;
+  color: var(--text-mid); text-decoration: none; transition: all 0.15s;
+  text-transform: uppercase;
+}
+.drop-menu a:hover { background: rgba(0,229,255,0.05); color: var(--plasma); padding-left: 1.8rem; }
+
+.hdr-right { display: flex; gap: 0.75rem; align-items: center; }
+
+/* ── STATUS INDICATOR ── */
+.status-dot {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono); font-size: 0.55rem;
+  letter-spacing: 0.15em; color: var(--text-lo); text-transform: uppercase;
+}
+.status-dot::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--acid); box-shadow: var(--glow-a);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 95vh;
+  display: flex; align-items: center;
+  background: var(--void); overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(0,229,255,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 80% at 20% 80%, rgba(57,255,106,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 90% 10%, rgba(0,100,120,0.08) 0%, transparent 50%);
+  background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(0,229,255,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 80% at 20% 80%, rgba(57,255,106,0.04) 0%, transparent 60%),
+    linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+}
+
+/* Orbital rings */
+.hero-orbitals {
+  position: absolute; right: -100px; top: 50%; transform: translateY(-50%);
+  width: 700px; height: 700px; pointer-events: none;
+}
+.orbital {
+  position: absolute; border-radius: 50%;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  border: 1px solid rgba(0,229,255,0.08);
+}
+.orbital::before {
+  content: ''; position: absolute; width: 8px; height: 8px;
+  border-radius: 50%; top: 50%; margin-top: -4px; margin-left: -4px;
+}
+.orbital:nth-child(1) {
+  width: 160px; height: 160px;
+  border-color: rgba(0,229,255,0.3);
+  animation: orbit1 12s linear infinite;
+}
+.orbital:nth-child(1)::before {
+  left: -4px; background: var(--plasma);
+  box-shadow: var(--glow-p);
+}
+.orbital:nth-child(2) {
+  width: 280px; height: 280px;
+  border-color: rgba(57,255,106,0.15);
+  animation: orbit1 20s linear infinite reverse;
+}
+.orbital:nth-child(2)::before {
+  left: -4px; background: var(--acid);
+  box-shadow: var(--glow-a);
+}
+.orbital:nth-child(3) {
+  width: 420px; height: 420px;
+  border-color: rgba(0,229,255,0.07);
+  animation: orbit1 35s linear infinite;
+}
+.orbital:nth-child(3)::before {
+  left: -4px; background: var(--amber);
+  box-shadow: var(--glow-am); width: 6px; height: 6px; margin-top: -3px; margin-left: -3px;
+}
+.orbital:nth-child(4) {
+  width: 560px; height: 560px;
+  border-color: rgba(0,229,255,0.04);
+  animation: orbit1 60s linear infinite reverse;
+}
+.orbital:nth-child(4)::before { display: none; }
+.orbital:nth-child(5) {
+  width: 680px; height: 680px;
+  border: none;
+  background: none;
+}
+.orbital:nth-child(5)::before { display: none; }
+
+@keyframes orbit1 { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* Central hexagon core */
+.hero-core {
+  position: absolute; right: 180px; top: 50%; transform: translateY(-50%);
+  width: 120px; height: 120px; pointer-events: none;
+}
+.core-hex {
+  width: 100%; height: 100%;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: linear-gradient(135deg, rgba(0,229,255,0.15), rgba(0,100,120,0.08));
+  border: none;
+  animation: core-pulse 4s ease-in-out infinite;
+  position: relative;
+}
+@keyframes core-pulse {
+  0%, 100% { opacity: 0.6; filter: brightness(1); }
+  50% { opacity: 1; filter: brightness(1.4) drop-shadow(0 0 20px rgba(0,229,255,0.5)); }
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 6rem 2.5rem; max-width: 1320px; margin: 0 auto; width: 100%;
+}
+.hero-inner { max-width: 700px; }
+
+.hero-eyebrow {
+  font-family: var(--font-mono); font-size: 0.6rem;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--plasma); margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.hero-eyebrow::before {
+  content: ''; width: 40px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--plasma));
+}
+
+.hero h1 {
+  font-family: var(--font-disp); font-weight: 800;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 1.0; color: var(--white); margin: 0 0 2rem;
+  letter-spacing: 0.02em;
+}
+.hero h1 .accent { color: var(--plasma); display: block; }
+.hero h1 .acid-word { color: var(--acid); }
+
+.hero-sub {
+  font-size: 1.05rem; font-weight: 400;
+  color: var(--text-mid); max-width: 500px;
+  line-height: 1.8; margin-bottom: 2.5rem;
+}
+.hero-sub strong { color: var(--text); font-weight: 600; }
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+
+/* Data readouts */
+.hero-data {
+  display: flex; gap: 0; border: 1px solid rgba(0,229,255,0.1);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  overflow: hidden;
+}
+.hero-datum {
+  flex: 1; padding: 1.2rem 1.5rem;
+  border-right: 1px solid rgba(0,229,255,0.1);
+  background: rgba(0,229,255,0.02);
+}
+.hero-datum:last-child { border-right: none; }
+.datum-val {
+  font-family: var(--font-disp); font-weight: 700;
+  font-size: 1.8rem; color: var(--plasma); line-height: 1;
+}
+.datum-label {
+  font-family: var(--font-mono); font-size: 0.52rem;
+  letter-spacing: 0.2em; color: var(--text-lo);
+  text-transform: uppercase; margin-top: 0.3rem;
+}
+
+/* ── PULSE BAND ── */
+.pulse-band {
+  background: var(--void); padding: 0;
+  border-top: 1px solid rgba(0,229,255,0.1);
+  border-bottom: 1px solid rgba(0,229,255,0.1);
+  overflow: hidden; position: relative;
+}
+.pulse-band::before {
+  content: '';
+  position: absolute; top: 0; left: -200%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,229,255,0.03), transparent);
+  animation: pulse-scan 6s linear infinite;
+}
+@keyframes pulse-scan { to { left: 200%; } }
+
+.pulse-inner {
+  display: flex; max-width: 1320px; margin: 0 auto;
+}
+.pulse-stat {
+  flex: 1; padding: 1.5rem 2rem; text-align: center;
+  border-right: 1px solid rgba(0,229,255,0.08);
+  transition: background 0.3s;
+  position: relative;
+}
+.pulse-stat:last-child { border-right: none; }
+.pulse-stat:hover { background: rgba(0,229,255,0.03); }
+.pulse-stat::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--plasma), transparent);
+  transform: scaleX(0); transition: transform 0.4s ease;
+}
+.pulse-stat:hover::before { transform: scaleX(1); }
+
+.pstat-n {
+  font-family: var(--font-disp); font-weight: 700;
+  font-size: 2rem; color: var(--plasma); line-height: 1;
+}
+.pstat-l {
+  font-family: var(--font-mono); font-size: 0.52rem;
+  letter-spacing: 0.2em; color: var(--text-lo);
+  text-transform: uppercase; margin-top: 0.3rem;
+}
+
+/* ── SECTION ── */
+.section { padding: 7rem 0; }
+.section-head { margin-bottom: 4rem; }
+.section-head.split {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+}
+
+/* ── ABOUT ── */
+.about-band {
+  background: var(--deep);
+  border-top: 1px solid rgba(0,229,255,0.08);
+  border-bottom: 1px solid rgba(0,229,255,0.08);
+  position: relative; overflow: hidden;
+}
+.about-band::before {
+  content: '';
+  position: absolute; right: -200px; top: -200px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,229,255,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+}
+.about-text .lead {
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 1.2rem; color: var(--text); line-height: 1.7;
+  margin: 1rem 0 1.5rem; font-style: italic;
+}
+.about-text p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 1rem; }
+.about-text p strong { color: var(--text); font-weight: 600; }
+
+.about-visual { position: relative; }
+.about-matrix {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: rgba(0,229,255,0.08);
+}
+.a-cell {
+  background: var(--panel); padding: 1.8rem 1.5rem;
+  transition: all 0.3s; position: relative; overflow: hidden;
+}
+.a-cell::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--plasma), transparent);
+  transform: scaleX(0); transition: transform 0.4s;
+}
+.a-cell:hover { background: var(--panel2); }
+.a-cell:hover::after { transform: scaleX(1); }
+.a-cell:first-child {
+  grid-column: span 2;
+  background: linear-gradient(135deg, var(--panel) 0%, rgba(0,229,255,0.06) 100%);
+  border: 1px solid rgba(0,229,255,0.12);
+}
+.a-cell-num {
+  font-family: var(--font-disp); font-weight: 800;
+  font-size: 3rem; color: var(--plasma); line-height: 1;
+}
+.a-cell-sub {
+  font-family: var(--font-mono); font-size: 0.55rem;
+  letter-spacing: 0.2em; color: var(--text-lo);
+  text-transform: uppercase; margin-top: 0.25rem;
+}
+.a-cell-title {
+  font-family: var(--font-disp); font-size: 0.65rem;
+  font-weight: 600; letter-spacing: 0.1em;
+  color: var(--text-lo); text-transform: uppercase; margin-bottom: 0.4rem;
+}
+.a-cell:hover .a-cell-title { color: var(--plasma); }
+.a-cell-desc { font-size: 0.78rem; color: var(--text-lo); line-height: 1.6; }
+.a-ico { font-size: 1.5rem; margin-bottom: 0.7rem; }
+
+/* ── CAPABILITIES ── */
+.capabilities { background: var(--void); position: relative; overflow: hidden; }
+.capabilities::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.cap-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: rgba(0,229,255,0.06); position: relative; z-index: 1;
+}
+.cap-card {
+  background: var(--void); padding: 2.5rem 2rem;
+  transition: all 0.3s; cursor: none; position: relative; overflow: hidden;
+  border: none;
+}
+.cap-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,229,255,0.04) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.4s;
+}
+.cap-card::after {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--plasma); transition: width 0.4s ease;
+}
+.cap-card:hover { background: rgba(0,229,255,0.02); }
+.cap-card:hover::before { opacity: 1; }
+.cap-card:hover::after { width: 100%; box-shadow: var(--glow-p); }
+
+.cap-ico-wrap {
+  width: 52px; height: 52px; margin-bottom: 1.5rem;
+  position: relative; display: flex; align-items: center; justify-content: center;
+}
+.cap-ico-wrap::before {
+  content: ''; position: absolute; inset: 0;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: rgba(0,229,255,0.08); border: none;
+  transition: all 0.3s;
+}
+.cap-card:hover .cap-ico-wrap::before {
+  background: rgba(0,229,255,0.15);
+  filter: drop-shadow(0 0 8px rgba(0,229,255,0.3));
+}
+.cap-ico { font-size: 1.4rem; position: relative; z-index: 1; }
+
+.cap-num {
+  font-family: var(--font-mono); font-size: 0.52rem;
+  letter-spacing: 0.25em; color: var(--plasma3); margin-bottom: 0.5rem;
+}
+.cap-title {
+  font-family: var(--font-disp); font-weight: 600; font-size: 0.85rem;
+  color: var(--text); margin-bottom: 0.7rem; letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.cap-card:hover .cap-title { color: var(--plasma); }
+.cap-desc { font-size: 0.84rem; color: var(--text-lo); line-height: 1.75; }
+.cap-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 1.3rem; font-family: var(--font-mono); font-size: 0.62rem;
+  letter-spacing: 0.15em; color: var(--plasma); text-decoration: none;
+  text-transform: uppercase; transition: gap 0.2s;
+}
+.cap-link:hover { gap: 0.8rem; }
+
+/* ── MATERIALS ── */
+.materials {
+  background: var(--deep);
+  border-top: 1px solid rgba(0,229,255,0.06);
+}
+.mat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(0,229,255,0.06); }
+.mat-card {
+  background: var(--panel); padding: 1.8rem 1.5rem;
+  transition: all 0.3s; position: relative; overflow: hidden;
+}
+.mat-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px; background: var(--plasma); transform: scaleY(0);
+  transition: transform 0.3s; transform-origin: bottom;
+}
+.mat-card:hover { background: var(--panel2); }
+.mat-card:hover::before { transform: scaleY(1); }
+
+.mat-tag {
+  display: inline-block; padding: 0.2rem 0.6rem;
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.18em;
+  text-transform: uppercase; background: rgba(0,229,255,0.08);
+  color: var(--plasma); margin-bottom: 0.8rem; border-radius: 2px;
+}
+.mat-name {
+  font-family: var(--font-disp); font-weight: 600;
+  font-size: 0.78rem; color: var(--text); margin-bottom: 0.7rem;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.mat-card:hover .mat-name { color: var(--plasma); }
+.mat-desc { font-size: 0.78rem; color: var(--text-lo); line-height: 1.65; }
+
+/* ── INDUSTRIES ── */
+.industries {
+  background: var(--void); position: relative; overflow: hidden;
+}
+.industries::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 10% 50%, rgba(57,255,106,0.03) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 90% 30%, rgba(0,229,255,0.03) 0%, transparent 70%);
+}
+.ind-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: rgba(0,229,255,0.05); position: relative; z-index: 1;
+}
+.ind-card {
+  background: var(--void); padding: 2rem 1.5rem;
+  transition: all 0.3s; position: relative; overflow: hidden;
+}
+.ind-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(57,255,106,0.04) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.ind-card:hover { background: rgba(57,255,106,0.02); }
+.ind-card:hover::after { opacity: 1; }
+.ind-ico { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.ind-name {
+  font-family: var(--font-disp); font-weight: 600;
+  font-size: 0.72rem; color: var(--text); letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 0.5rem;
+}
+.ind-card:hover .ind-name { color: var(--acid); }
+.ind-desc { font-size: 0.78rem; color: var(--text-lo); line-height: 1.6; }
+
+/* ── PROCESS ── */
+.process {
+  background: var(--deep); position: relative; overflow: hidden;
+  border-top: 1px solid rgba(0,229,255,0.06);
+}
+.process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; position: relative; background: rgba(0,229,255,0.05);
+}
+.process-step {
+  background: var(--panel); padding: 2.5rem 2rem; position: relative;
+  border-right: 1px solid rgba(0,229,255,0.06); overflow: hidden;
+}
+.process-step:last-child { border-right: none; }
+.process-step::before {
+  content: attr(data-n);
+  position: absolute; right: 1rem; top: 1rem;
+  font-family: var(--font-disp); font-size: 3.5rem; font-weight: 900;
+  color: rgba(0,229,255,0.03); line-height: 1;
+}
+.process-step::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 1px; background: linear-gradient(90deg, var(--plasma), transparent);
+  transform: scaleX(0); transition: transform 0.4s; transform-origin: left;
+}
+.process-step:hover::after { transform: scaleX(1); }
+
+.proc-num {
+  font-family: var(--font-disp); font-weight: 900;
+  font-size: 1.4rem; color: var(--plasma); line-height: 1; margin-bottom: 1rem;
+}
+.proc-title {
+  font-family: var(--font-disp); font-weight: 600; font-size: 0.75rem;
+  color: var(--text); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.7rem;
+}
+.proc-desc { font-size: 0.82rem; color: var(--text-lo); line-height: 1.7; }
+
+/* ── EQUIPMENT ── */
+.equipment { background: var(--void); }
+.equip-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+  background: rgba(0,229,255,0.05);
+}
+.equip-card {
+  background: var(--void); padding: 2rem;
+  display: flex; gap: 1.5rem; align-items: flex-start;
+  transition: background 0.3s; position: relative; overflow: hidden;
+}
+.equip-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--plasma3), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.equip-card:hover { background: rgba(0,229,255,0.02); }
+.equip-card:hover::before { opacity: 1; }
+.equip-ico {
+  width: 44px; height: 44px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  background: rgba(0,229,255,0.06);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.equip-title {
+  font-family: var(--font-disp); font-weight: 600; font-size: 0.7rem;
+  color: var(--text); letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.equip-card:hover .equip-title { color: var(--plasma); }
+.equip-desc { font-size: 0.8rem; color: var(--text-lo); line-height: 1.7; }
+
+/* ── TESTIMONIALS ── */
+.testimonials { background: var(--deep); border-top: 1px solid rgba(0,229,255,0.06); }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(0,229,255,0.05); }
+.testi-card {
+  background: var(--panel); padding: 2rem 1.8rem;
+  position: relative; overflow: hidden; transition: background 0.3s;
+}
+.testi-card::before {
+  content: '"'; position: absolute; right: 1rem; top: 0.5rem;
+  font-size: 5rem; font-family: var(--font-disp); font-weight: 900;
+  color: rgba(0,229,255,0.04); line-height: 1;
+}
+.testi-card:hover { background: var(--panel2); }
+
+.testi-stars {
+  color: var(--amber); font-size: 0.7rem; letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+}
+.testi-text {
+  font-size: 0.88rem; color: var(--text-mid); line-height: 1.8;
+  margin-bottom: 1.5rem; font-style: italic;
+}
+.testi-author { display: flex; align-items: center; gap: 0.8rem; }
+.testi-av {
+  width: 38px; height: 38px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-disp); font-weight: 700; font-size: 0.75rem;
+  color: var(--plasma); border: 1px solid rgba(0,229,255,0.2);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: rgba(0,229,255,0.06);
+}
+.testi-name {
+  font-family: var(--font-disp); font-weight: 600; font-size: 0.68rem;
+  color: var(--text); letter-spacing: 0.08em; text-transform: uppercase;
+}
+.testi-co { font-size: 0.72rem; color: var(--text-lo); margin-top: 0.1rem; }
+
+/* ── QUOTE CTA ── */
+.quote-cta {
+  background: var(--void); position: relative; overflow: hidden;
+  border-top: 1px solid rgba(0,229,255,0.08);
+}
+.quote-cta::before {
+  content: '';
+  position: absolute; top: -200px; left: -200px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(57,255,106,0.04) 0%, transparent 70%);
+}
+.quote-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+  padding: 7rem 0; position: relative; z-index: 1;
+}
+.quote-text .lead {
+  font-family: var(--font-body); font-size: 1.05rem; color: var(--text-mid);
+  line-height: 1.85; margin: 1rem 0 2rem;
+}
+.check-list { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 2rem; }
+.check-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  font-family: var(--font-mono); font-size: 0.68rem;
+  letter-spacing: 0.1em; color: var(--text-mid);
+}
+.check-item::before {
+  content: '▸'; color: var(--acid); font-size: 0.8rem;
+  text-shadow: var(--glow-a);
+}
+
+.quote-form-panel {
+  background: var(--panel);
+  border: 1px solid rgba(0,229,255,0.12);
+  padding: 2.5rem;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  position: relative;
+}
+.quote-form-panel::before {
+  content: ''; position: absolute; top: 0; right: 0;
+  border-style: solid; border-width: 0 16px 16px 0;
+  border-color: transparent rgba(0,229,255,0.2) transparent transparent;
+}
+.qf-title {
+  font-family: var(--font-disp); font-weight: 700; font-size: 0.75rem;
+  color: var(--plasma); letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 1.5rem; padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0,229,255,0.1);
+}
+.qf-services {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;
+}
+.qf-svc {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.12em;
+  padding: 0.4rem 0.8rem; text-transform: uppercase; cursor: none;
+  background: transparent; color: var(--text-lo);
+  border: 1px solid rgba(0,229,255,0.1); transition: all 0.2s;
+  clip-path: polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
+}
+.qf-svc:hover, .qf-svc.on {
+  background: rgba(0,229,255,0.08); color: var(--plasma);
+  border-color: rgba(0,229,255,0.3);
+  box-shadow: inset 0 0 10px rgba(0,229,255,0.05);
+}
+.qf-input {
+  width: 100%; background: rgba(0,229,255,0.03);
+  border: none; border-bottom: 1px solid rgba(0,229,255,0.12);
+  color: var(--text); font-family: var(--font-mono); font-size: 0.75rem;
+  padding: 0.8rem 0.5rem; margin-bottom: 0.8rem;
+  outline: none; transition: border-color 0.2s; letter-spacing: 0.05em;
+}
+.qf-input::placeholder { color: var(--text-lo); }
+.qf-input:focus { border-bottom-color: var(--plasma); }
+
+/* ── FOOTER ── */
+footer.contact-band {
+  background: var(--deep);
+  border-top: 1px solid rgba(0,229,255,0.1);
+  padding: 5rem 0 0;
+}
+.contact-grid {
+  display: grid; grid-template-columns: 1.4fr 0.8fr 1fr; gap: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(0,229,255,0.06);
+}
+.contact-brand p {
+  font-size: 0.85rem; color: var(--text-lo); line-height: 1.9;
+  max-width: 300px; margin: 1.2rem 0 1.5rem;
+}
+.contact-info { display: flex; flex-direction: column; gap: 0.7rem; }
+.contact-info a {
+  font-family: var(--font-mono); font-size: 0.68rem;
+  letter-spacing: 0.1em; color: var(--text-lo); text-decoration: none;
+  transition: color 0.2s; display: flex; align-items: center; gap: 0.6rem;
+}
+.contact-info a:hover { color: var(--plasma); }
+
+.ft-col h4 {
+  font-family: var(--font-disp); font-weight: 600; font-size: 0.6rem;
+  text-transform: uppercase; letter-spacing: 0.2em;
+  color: var(--plasma); margin-bottom: 1.3rem;
+}
+.ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.ft-col li a {
+  font-family: var(--font-mono); font-size: 0.68rem;
+  letter-spacing: 0.08em; color: var(--text-lo);
+  text-decoration: none; transition: color 0.2s;
+}
+.ft-col li a:hover { color: var(--plasma); }
+
+.svc-links { display: flex; flex-direction: column; gap: 0.3rem; }
+.svc-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid rgba(0,229,255,0.06);
+  font-family: var(--font-mono); font-size: 0.65rem;
+  letter-spacing: 0.08em; color: var(--text-lo);
+  text-decoration: none; transition: all 0.2s;
+  clip-path: polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
+}
+.svc-link:hover {
+  border-color: rgba(0,229,255,0.2); color: var(--plasma);
+  background: rgba(0,229,255,0.04);
+}
+.svc-arrow { color: var(--plasma3); transition: color 0.2s; }
+.svc-link:hover .svc-arrow { color: var(--plasma); }
+
+.ft-soc { display: flex; gap: 0.5rem; margin-top: 1.2rem; }
+.soc {
+  width: 32px; height: 32px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: rgba(0,229,255,0.06); border: none;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-lo); font-size: 0.75rem; font-family: var(--font-body);
+  font-weight: 700; text-decoration: none; transition: all 0.2s;
+}
+.soc:hover { background: rgba(0,229,255,0.15); color: var(--plasma); }
+
+.footer-bot {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.5rem 0; flex-wrap: wrap; gap: 1rem;
+}
+.ft-copy {
+  font-family: var(--font-mono); font-size: 0.55rem;
+  letter-spacing: 0.15em; color: rgba(255,255,255,0.15);
+}
+
+/* ── SCROLL REVEAL ── */
+.sr { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.sr.vis { opacity: 1; transform: none; }
+
+/* ── GLITCH EFFECT on logo text ── */
+@keyframes glitch1 {
+  0%, 94%, 100% { clip-path: none; transform: none; }
+  95% { clip-path: inset(30% 0 50% 0); transform: translateX(-4px); }
+  97% { clip-path: inset(60% 0 20% 0); transform: translateX(4px); }
+}
+.glitch { animation: glitch1 8s infinite; }
+
+/* ── RESPONSIVE ── */
+@media(max-width: 1050px) {
+  nav.mainnav { display: none; }
+  .about-grid, .quote-inner, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .cap-grid, .ind-grid { grid-template-columns: 1fr 1fr; }
+  .mat-grid { grid-template-columns: 1fr 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .equip-grid { grid-template-columns: 1fr; }
+  .hero-orbitals { display: none; }
+  .hero-core { display: none; }
+  .pulse-inner { flex-wrap: wrap; }
+  .pulse-stat { min-width: 50%; }
+  .hero h1 { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+  .hero-data { display: none; }
+}
+
+@media(max-width: 640px) {
+  .cap-grid, .ind-grid, .mat-grid, .process-steps, .about-matrix { grid-template-columns: 1fr; }
+  .a-cell:first-child { grid-column: span 1; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  ▸ OPERATIONAL &nbsp;·&nbsp; FAMILY-OWNED &nbsp;<strong>1964–PRESENT</strong>&nbsp; ·&nbsp; VICTORVILLE, CALIFORNIA &nbsp;·&nbsp; <strong>(760) 245-0590</strong>
+</div>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <!-- LOGO -->
+    <a href="#" class="site-logo" aria-label="DeVoll Rubber Mfg Group">
+      <svg width="220" height="48" viewBox="0 0 380 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="hex-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#006d82" stop-opacity="0.7"/>
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="1.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- Hexagon emblem -->
+        <polygon points="36,4 62,19 62,49 36,64 10,49 10,19" fill="none" stroke="url(#hex-grad)" stroke-width="1.5" opacity="0.8"/>
+        <polygon points="36,12 55,23 55,45 36,56 17,45 17,23" fill="rgba(0,229,255,0.06)" stroke="rgba(0,229,255,0.2)" stroke-width="1"/>
+        <text x="36" y="40" font-family="'Orbitron',sans-serif" font-weight="900" font-size="14" fill="#00e5ff" text-anchor="middle" filter="url(#glow)" class="glitch">DV</text>
+        <!-- Orbital dot -->
+        <circle cx="62" cy="19" r="3" fill="#00e5ff" opacity="0.8" filter="url(#glow)"/>
+        <!-- Wordmark -->
+        <text x="80" y="34" font-family="'Orbitron',sans-serif" font-weight="400" font-size="20" fill="rgba(0,229,255,0.5)" letter-spacing="1">De</text>
+        <text x="112" y="34" font-family="'Orbitron',sans-serif" font-weight="800" font-size="20" fill="#c8e8f0" letter-spacing="1">VOLL</text>
+        <line x1="80" y1="40" x2="240" y2="40" stroke="rgba(0,229,255,0.12)" stroke-width="1"/>
+        <text x="80" y="54" font-family="'Space Mono',monospace" font-size="8.5" fill="rgba(0,229,255,0.35)" letter-spacing="3">RUBBER MFG GROUP, INC</text>
+        <!-- Accent marks -->
+        <rect x="245" y="26" width="1" height="20" fill="rgba(0,229,255,0.2)"/>
+        <text x="252" y="36" font-family="'Space Mono',monospace" font-size="7" fill="rgba(57,255,106,0.5)" letter-spacing="1">EST 1964</text>
+      </svg>
+    </a>
+
+    <nav class="mainnav">
+      <a href="#" class="nav-a active">Home</a>
+      <div class="nav-drop">
+        <a href="#" class="nav-a">Capabilities ▾</a>
+        <div class="drop-menu">
+          <a href="#">Lathe Cutting</a>
+          <a href="#">Rubber Extrusions</a>
+          <a href="#">Molded Parts</a>
+          <a href="#">Industrial Rollers</a>
+          <a href="#">Waterjet Cutting</a>
+          <a href="#">Custom Gaskets &amp; Seals</a>
+        </div>
+      </div>
+      <div class="nav-drop">
+        <a href="#" class="nav-a">Materials ▾</a>
+        <div class="drop-menu">
+          <a href="#">Natural Rubber (NR)</a>
+          <a href="#">Neoprene (CR)</a>
+          <a href="#">EPDM</a>
+          <a href="#">Nitrile (NBR)</a>
+          <a href="#">Silicone</a>
+          <a href="#">Viton (FKM)</a>
+        </div>
+      </div>
+      <a href="#" class="nav-a">Industries</a>
+      <a href="#" class="nav-a">About</a>
+    </nav>
+
+    <div class="hdr-right">
+      <div class="status-dot">Systems Online</div>
+      <a href="#" class="btn btn-plasma btn-sm">Get a Quote</a>
+    </div>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orbitals">
+    <div class="orbital"></div>
+    <div class="orbital"></div>
+    <div class="orbital"></div>
+    <div class="orbital"></div>
+    <div class="orbital"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Victorville, CA — Est. 1964 — Custom Polymer Engineering</div>
+      <h1>
+        Precision <span class="acid-word">Rubber</span>
+        <span class="accent">Engineered for</span>
+        Extremes
+      </h1>
+      <p class="hero-sub">
+        <strong>Family-owned since 1964.</strong> DeVoll Rubber Mfg Group manufactures custom rubber components to exact specification — gaskets, seals, extrusions, rollers, molded parts, lathe-cut, and waterjet-machined. From prototype to production, built to last.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-acid">Request a Quote ▸</a>
+        <a href="#" class="btn btn-plasma">Our Capabilities</a>
+        <a href="#" class="btn btn-ghost">Polymer Guide</a>
+      </div>
+      <div class="hero-data">
+        <div class="hero-datum">
+          <div class="datum-val">60+</div>
+          <div class="datum-label">Years in Operation</div>
+        </div>
+        <div class="hero-datum">
+          <div class="datum-val">6</div>
+          <div class="datum-label">Core Capabilities</div>
+        </div>
+        <div class="hero-datum">
+          <div class="datum-val">∞</div>
+          <div class="datum-label">Custom Compounds</div>
+        </div>
+        <div class="hero-datum">
+          <div class="datum-val">0</div>
+          <div class="datum-label">Min. Order Qty</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PULSE STATS ══ -->
+<div class="pulse-band">
+  <div class="pulse-inner">
+    <div class="pulse-stat">
+      <div class="pstat-n">60+</div>
+      <div class="pstat-l">Years of Operation</div>
+    </div>
+    <div class="pulse-stat">
+      <div class="pstat-n">6</div>
+      <div class="pstat-l">Mfg Capabilities</div>
+    </div>
+    <div class="pulse-stat">
+      <div class="pstat-n">No MOQ</div>
+      <div class="pstat-l">Min Order Qty</div>
+    </div>
+    <div class="pulse-stat">
+      <div class="pstat-n">10+</div>
+      <div class="pstat-l">Industries Served</div>
+    </div>
+    <div class="pulse-stat">
+      <div class="pstat-n">CA</div>
+      <div class="pstat-l">Domestic Manufacturing</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<section class="section about-band">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text sr">
+        <span class="glyph">About DeVoll</span>
+        <h2 class="sec-title" style="margin-top:0.75rem">
+          Sixty Years of<br><em>Precision Craft</em>
+        </h2>
+        <p class="lead">We're not a portal. We're not a marketplace. We're a shop — family-owned, in Victorville, California, where skilled machinists have been turning raw rubber into precision components since 1964.</p>
+        <p>DeVoll Rubber Mfg Group is a domestic manufacturer of custom rubber products serving industrial, commercial, and specialty markets across the United States. <strong>Every part we make is engineered to your exact specification</strong> — no off-the-shelf compromises.</p>
+        <p>Our team combines decades of hands-on expertise with modern CNC waterjet and lathe capabilities. Whether you need a single prototype gasket or a full production run of complex molded components, you work directly with the people cutting your parts.</p>
+        <a href="#" class="btn btn-plasma" style="margin-top: 1.5rem;">Learn Our Story ▸</a>
+      </div>
+      <div class="about-visual sr">
+        <div class="about-matrix">
+          <div class="a-cell">
+            <div class="a-cell-num">1964</div>
+            <div class="a-cell-sub">Year Founded / Victorville, CA</div>
+          </div>
+          <div class="a-cell">
+            <div class="a-ico">🏭</div>
+            <div class="a-cell-title">Family Owned</div>
+            <div class="a-cell-desc">Three generations of hands-on craftsmanship. You talk to the people who make your parts.</div>
+          </div>
+          <div class="a-cell">
+            <div class="a-ico">🎯</div>
+            <div class="a-cell-title">Exact Tolerances</div>
+            <div class="a-cell-desc">CNC-precision lathe cutting and waterjet machining for complex profiles and tight specs.</div>
+          </div>
+          <div class="a-cell">
+            <div class="a-ico">⚡</div>
+            <div class="a-cell-title">Fast Turnaround</div>
+            <div class="a-cell-desc">We quote every job and give honest lead times. No runaround, no surprises.</div>
+          </div>
+          <div class="a-cell">
+            <div class="a-ico">🔬</div>
+            <div class="a-cell-title">Compound Expertise</div>
+            <div class="a-cell-desc">Deep material science knowledge across NR, Neoprene, EPDM, Nitrile, Silicone, Viton, and more.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CAPABILITIES ══ -->
+<section class="section capabilities">
+  <div class="wrap">
+    <div class="section-head split sr">
+      <div>
+        <span class="glyph">Capabilities</span>
+        <h2 class="sec-title">Manufacturing<br><em>Systems</em></h2>
+      </div>
+      <a href="#" class="btn btn-ghost">Full Capability Specs ▸</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="cap-grid sr">
+      <div class="cap-card">
+        <div class="cap-num">CAP-001</div>
+        <div class="cap-ico-wrap"><span class="cap-ico">⚙️</span></div>
+        <div class="cap-title">Lathe Cutting</div>
+        <p class="cap-desc">Precision lathe-cut gaskets, washers, o-rings, bushings, and custom shapes from sheet or rod stock. Ideal for exact roundness and tight dimensional tolerances at any volume.</p>
+        <a href="#" class="cap-link">Access Specs →</a>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">CAP-002</div>
+        <div class="cap-ico-wrap"><span class="cap-ico">📐</span></div>
+        <div class="cap-title">Rubber Extrusions</div>
+        <p class="cap-desc">Custom-profiled extruded rubber seals, tubing, cords, strips, and profiles in virtually any cross-section. Continuous lengths or cut-to-spec pieces, any durometer.</p>
+        <a href="#" class="cap-link">Access Specs →</a>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">CAP-003</div>
+        <div class="cap-ico-wrap"><span class="cap-ico">🔩</span></div>
+        <div class="cap-title">Molded Parts</div>
+        <p class="cap-desc">Compression, transfer, and injection molded rubber components for high-volume or complex geometries. We work from your drawings or assist in design for manufacturability.</p>
+        <a href="#" class="cap-link">Access Specs →</a>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">CAP-004</div>
+        <div class="cap-ico-wrap"><span class="cap-ico">🎯</span></div>
+        <div class="cap-title">Industrial Rollers</div>
+        <p class="cap-desc">Rubber-covered rollers for printing, converting, food processing, and industrial equipment. Custom OD, durometer, and surface finish. Recover and rebuild available.</p>
+        <a href="#" class="cap-link">Access Specs →</a>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">CAP-005</div>
+        <div class="cap-ico-wrap"><span class="cap-ico">💧</span></div>
+        <div class="cap-title">Waterjet Cutting</div>
+        <p class="cap-desc">CNC waterjet for complex profiles, cutouts, and multi-layer composites without heat distortion. Perfect for thick materials, intricate shapes, or parts where tooling is cost-prohibitive.</p>
+        <a href="#" class="cap-link">Access Specs →</a>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">CAP-006</div>
+        <div class="cap-ico-wrap"><span class="cap-ico">🔒</span></div>
+        <div class="cap-title">Gaskets &amp; Seals</div>
+        <p class="cap-desc">Full-service gasket manufacturing — cut, molded, or die-cut — in any compound. Sheet gaskets, flange gaskets, ring gaskets, custom seals. Spec matching, material recommendation included.</p>
+        <a href="#" class="cap-link">Access Specs →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MATERIALS ══ -->
+<section class="section materials">
+  <div class="wrap">
+    <div class="section-head split sr">
+      <div>
+        <span class="glyph">Polymer Database</span>
+        <h2 class="sec-title">Material<br><em>Compounds</em></h2>
+      </div>
+      <a href="#" class="btn btn-ghost">Full Polymer Guide ▸</a>
+    </div>
+    <div class="mat-grid sr">
+      <div class="mat-card">
+        <span class="mat-tag">NR</span>
+        <div class="mat-name">Natural Rubber</div>
+        <p class="mat-desc">Exceptional elasticity, resilience, and tensile strength. Ideal for vibration isolation, shock absorbers, and dynamic applications requiring high elongation.</p>
+      </div>
+      <div class="mat-card">
+        <span class="mat-tag">CR</span>
+        <div class="mat-name">Neoprene</div>
+        <p class="mat-desc">Outstanding weather, ozone, and flame resistance with good mechanical properties. Widely used in outdoor sealing, electrical insulation, and marine environments.</p>
+      </div>
+      <div class="mat-card">
+        <span class="mat-tag">EPDM</span>
+        <div class="mat-name">EPDM</div>
+        <p class="mat-desc">Superior UV, ozone, heat, and steam resistance. The workhorse for roofing, automotive weatherstripping, and water/steam sealing up to 300°F.</p>
+      </div>
+      <div class="mat-card">
+        <span class="mat-tag">NBR</span>
+        <div class="mat-name">Nitrile</div>
+        <p class="mat-desc">Excellent resistance to petroleum-based oils, fuels, and hydraulic fluids. Essential for oil seals, fuel system components, and hydraulic applications.</p>
+      </div>
+      <div class="mat-card">
+        <span class="mat-tag">VMQ</span>
+        <div class="mat-name">Silicone</div>
+        <p class="mat-desc">Extreme temperature range (−80°F to +450°F), outstanding biocompatibility and inertness. Used in food processing, medical devices, aerospace, and high-temp sealing.</p>
+      </div>
+      <div class="mat-card">
+        <span class="mat-tag">FKM</span>
+        <div class="mat-name">Viton® (FKM)</div>
+        <p class="mat-desc">Industry-leading resistance to fuels, solvents, chemicals, and high heat (up to 400°F continuous). The premium choice for critical chemical and aerospace sealing.</p>
+      </div>
+      <div class="mat-card">
+        <span class="mat-tag">SBR</span>
+        <div class="mat-name">SBR</div>
+        <p class="mat-desc">Cost-effective general-purpose compound. Good abrasion resistance and aging properties for wear pads, conveyor components, and sheet stock applications.</p>
+      </div>
+      <div class="mat-card">
+        <span class="mat-tag">IIR</span>
+        <div class="mat-name">Butyl (IIR)</div>
+        <p class="mat-desc">Exceptional impermeability to gases and moisture. Used in inner tubes, air barriers, chemical tank linings, and vibration damping applications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INDUSTRIES ══ -->
+<section class="section industries">
+  <div class="wrap">
+    <div class="section-head sr">
+      <span class="glyph">Sector Coverage</span>
+      <h2 class="sec-title">Industries<br><em>Served</em></h2>
+    </div>
+    <div class="ind-grid sr">
+      <div class="ind-card">
+        <span class="ind-ico">✈️</span>
+        <div class="ind-name">Aerospace &amp; Defense</div>
+        <p class="ind-desc">Mil-spec seals, vibration isolation mounts, and precision gaskets for critical aerospace systems.</p>
+      </div>
+      <div class="ind-card">
+        <span class="ind-ico">🚗</span>
+        <div class="ind-name">Automotive</div>
+        <p class="ind-desc">Engine seals, weatherstripping, vibration dampers, fluid system components, and custom moldings.</p>
+      </div>
+      <div class="ind-card">
+        <span class="ind-ico">🏭</span>
+        <div class="ind-name">Industrial OEM</div>
+        <p class="ind-desc">Custom components for machinery, equipment sealing, conveyor systems, and manufacturing operations.</p>
+      </div>
+      <div class="ind-card">
+        <span class="ind-ico">⚗️</span>
+        <div class="ind-name">Chemical Processing</div>
+        <p class="ind-desc">Chemical-resistant Viton and specialty compound gaskets for aggressive process environments.</p>
+      </div>
+      <div class="ind-card">
+        <span class="ind-ico">🍎</span>
+        <div class="ind-name">Food &amp; Beverage</div>
+        <p class="ind-desc">FDA-compliant silicone and EPDM seals for food-grade processing, packaging, and handling equipment.</p>
+      </div>
+      <div class="ind-card">
+        <span class="ind-ico">💊</span>
+        <div class="ind-name">Pharmaceutical</div>
+        <p class="ind-desc">USP-compliant elastomers for clean room, sterile processing, and drug manufacturing applications.</p>
+      </div>
+      <div class="ind-card">
+        <span class="ind-ico">🛢️</span>
+        <div class="ind-name">Oil &amp; Gas</div>
+        <p class="ind-desc">Nitrile and Viton seals and gaskets engineered for exposure to petroleum products, pressure, and heat.</p>
+      </div>
+      <div class="ind-card">
+        <span class="ind-ico">🏗️</span>
+        <div class="ind-name">Construction</div>
+        <p class="ind-desc">Expansion joint seals, HVAC gaskets, weather seals, and structural bearing pads for the built environment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROCESS ══ -->
+<section class="section process">
+  <div class="wrap">
+    <div class="section-head sr">
+      <span class="glyph">Workflow Protocol</span>
+      <h2 class="sec-title">From <em>Spec</em> to<br>Delivery</h2>
+    </div>
+    <div class="process-steps sr">
+      <div class="process-step" data-n="01">
+        <div class="proc-num">01</div>
+        <div class="proc-title">Submit Your Spec</div>
+        <p class="proc-desc">Send us a drawing, sample part, or description. We review every inquiry and respond with questions or a preliminary assessment — usually same day.</p>
+      </div>
+      <div class="process-step" data-n="02">
+        <div class="proc-num">02</div>
+        <div class="proc-title">Engineering Review</div>
+        <p class="proc-desc">Our team evaluates your application, material requirements, tolerances, and volume. We may recommend compound or design alternatives to improve performance or cost.</p>
+      </div>
+      <div class="process-step" data-n="03">
+        <div class="proc-num">03</div>
+        <div class="proc-title">Quote &amp; Lead Time</div>
+        <p class="proc-desc">You receive a clear, competitive quote with an honest lead time. No hidden fees, no bait-and-switch pricing. Prototype and production volumes both quoted.</p>
+      </div>
+      <div class="process-step" data-n="04">
+        <div class="proc-num">04</div>
+        <div class="proc-title">Manufacture &amp; Ship</div>
+        <p class="proc-desc">Parts are produced in our Victorville shop under direct quality oversight and shipped to your facility. Inspection documentation available upon request.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EQUIPMENT ══ -->
+<section class="section equipment">
+  <div class="wrap">
+    <div class="section-head split sr">
+      <div>
+        <span class="glyph">Facility Systems</span>
+        <h2 class="sec-title">Equipment &amp;<br><em>Infrastructure</em></h2>
+      </div>
+    </div>
+    <div class="equip-grid sr">
+      <div class="equip-card">
+        <div class="equip-ico">🔄</div>
+        <div>
+          <div class="equip-title">CNC Lathe Systems</div>
+          <p class="equip-desc">Multiple CNC and manual lathes capable of cutting gaskets, washers, rings, and complex rotational forms from sheet, rod, or tube stock in any rubber compound. Capacity from miniature o-rings to large-diameter industrial parts.</p>
+        </div>
+      </div>
+      <div class="equip-card">
+        <div class="equip-ico">💧</div>
+        <div>
+          <div class="equip-title">Waterjet Cutting Cell</div>
+          <p class="equip-desc">High-pressure abrasive waterjet system for complex profiles, nested layouts, and thick-section cutting without heat-affected zones. Suitable for rubber, cork, fiberglass, composites, and laminated materials.</p>
+        </div>
+      </div>
+      <div class="equip-card">
+        <div class="equip-ico">🏗️</div>
+        <div>
+          <div class="equip-title">Compression &amp; Transfer Molding</div>
+          <p class="equip-desc">Hydraulic molding presses for compression and transfer molding of custom rubber parts. Multi-cavity tooling available for volume efficiency. We can mold to your existing tooling or assist with tool design.</p>
+        </div>
+      </div>
+      <div class="equip-card">
+        <div class="equip-ico">📏</div>
+        <div>
+          <div class="equip-title">Die Cutting &amp; Fabrication</div>
+          <p class="equip-desc">Steel-rule and rotary die cutting for gaskets and flat seals from sheet goods. Slitting, skiving, buffing, and secondary fabrication operations performed in-house for complete part readiness.</p>
+        </div>
+      </div>
+      <div class="equip-card">
+        <div class="equip-ico">🔩</div>
+        <div>
+          <div class="equip-title">Extrusion Lines</div>
+          <p class="equip-desc">Custom rubber extrusion for cords, tubing, seals, and complex profiles in continuous or cut lengths. Multiple durometers and compounds. Vulcanization and post-cure performed on-site.</p>
+        </div>
+      </div>
+      <div class="equip-card">
+        <div class="equip-ico">🎯</div>
+        <div>
+          <div class="equip-title">Roller Covering Shop</div>
+          <p class="equip-desc">Full-service rubber roller covering, grinding, and reconditioning for industrial applications. Bonding, sleeve fitting, and precision OD grinding to specification. Re-covering of existing rollers available.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="section testimonials">
+  <div class="wrap">
+    <div class="section-head split sr">
+      <div>
+        <span class="glyph">Signal Received</span>
+        <h2 class="sec-title">What Our<br><em>Clients Say</em></h2>
+      </div>
+      <a href="#" class="btn btn-ghost">All Reviews ▸</a>
+    </div>
+    <div class="testi-grid sr">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">DeVoll has been our go-to rubber supplier for over 15 years. Their lathe-cut gaskets consistently hit our tolerances and their lead times are always reliable. Family business feel — they actually know your name.</p>
+        <div class="testi-author">
+          <div class="testi-av">JM</div>
+          <div>
+            <div class="testi-name">James M.</div>
+            <div class="testi-co">Maintenance Supervisor — Industrial OEM</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">We needed a very specific Viton compound gasket for a chemical application. DeVoll not only matched the spec perfectly, they recommended a formulation we hadn't even considered that worked better. That's real expertise.</p>
+        <div class="testi-author">
+          <div class="testi-av">SR</div>
+          <div>
+            <div class="testi-name">Sandra R.</div>
+            <div class="testi-co">Process Engineer — Chemical Plant</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Their waterjet cutting capability has been a game-changer for us. Complex profiles that used to require expensive tooling we can now get cut accurately and affordably. Turnaround is excellent.</p>
+        <div class="testi-author">
+          <div class="testi-av">DK</div>
+          <div>
+            <div class="testi-name">Dave K.</div>
+            <div class="testi-co">Purchasing Manager — Aerospace Supplier</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ QUOTE CTA ══ -->
+<section class="quote-cta">
+  <div class="wrap">
+    <div class="quote-inner">
+      <div class="quote-text sr">
+        <span class="glyph">Initiate Contact</span>
+        <h2 class="sec-title">Ready to Get<br>Your <em>Parts Made?</em></h2>
+        <p class="lead">We quote every job — no minimum quantity, no run too small or too large. Tell us what you need and we'll get back to you fast with a competitive price and honest lead time.</p>
+        <div class="check-list">
+          <div class="check-item">No minimum order quantity</div>
+          <div class="check-item">Prototype to production volumes</div>
+          <div class="check-item">Custom compound development available</div>
+          <div class="check-item">Fast turnaround from our California shop</div>
+          <div class="check-item">Direct access to the engineers making your parts</div>
+        </div>
+      </div>
+      <div class="quote-form-panel sr">
+        <div class="qf-title">▸ Transmit Quote Request</div>
+        <div style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-lo);margin-bottom:.75rem;">Select Service(s)</div>
+        <div class="qf-services">
+          <button class="qf-svc" onclick="this.classList.toggle('on')">Lathe Cutting</button>
+          <button class="qf-svc" onclick="this.classList.toggle('on')">Extrusions</button>
+          <button class="qf-svc" onclick="this.classList.toggle('on')">Molded Parts</button>
+          <button class="qf-svc" onclick="this.classList.toggle('on')">Rollers</button>
+          <button class="qf-svc" onclick="this.classList.toggle('on')">Waterjet</button>
+          <button class="qf-svc" onclick="this.classList.toggle('on')">Gaskets &amp; Seals</button>
+        </div>
+        <input class="qf-input" type="text" placeholder="Your Name">
+        <input class="qf-input" type="text" placeholder="Company Name">
+        <input class="qf-input" type="email" placeholder="Email Address">
+        <input class="qf-input" type="tel" placeholder="Phone Number">
+        <textarea class="qf-input" rows="3" placeholder="Describe your part / application..." style="resize:vertical;"></textarea>
+        <a href="#" class="btn btn-acid" style="width:100%;justify-content:center;margin-top:0.75rem;">Transmit Request ▸</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="contact-band">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-brand">
+        <svg width="180" height="44" viewBox="0 0 380 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="36,4 62,19 62,49 36,64 10,49 10,19" fill="none" stroke="rgba(0,229,255,0.4)" stroke-width="1.5"/>
+          <polygon points="36,12 55,23 55,45 36,56 17,45 17,23" fill="rgba(0,229,255,0.05)" stroke="rgba(0,229,255,0.15)" stroke-width="1"/>
+          <text x="36" y="40" font-family="'Orbitron',sans-serif" font-weight="900" font-size="14" fill="rgba(0,229,255,0.7)" text-anchor="middle">DV</text>
+          <text x="80" y="34" font-family="'Orbitron',sans-serif" font-weight="400" font-size="20" fill="rgba(0,229,255,0.3)" letter-spacing="1">De</text>
+          <text x="112" y="34" font-family="'Orbitron',sans-serif" font-weight="800" font-size="20" fill="rgba(200,232,240,0.7)" letter-spacing="1">VOLL</text>
+          <line x1="80" y1="40" x2="220" y2="40" stroke="rgba(0,229,255,0.1)" stroke-width="1"/>
+          <text x="80" y="54" font-family="'Space Mono',monospace" font-size="8" fill="rgba(0,229,255,0.2)" letter-spacing="2.5">RUBBER MFG GROUP, INC</text>
+        </svg>
+        <p>Family-owned precision rubber manufacturer serving California and the nation since 1964. From our shop in Victorville to your facility — built to spec, built to last.</p>
+        <div class="contact-info">
+          <a href="tel:7602450590">↗ (760) 245-0590</a>
+          <a href="mailto:info@devollrubber.com">↗ info@devollrubber.com</a>
+          <a href="#">↗ Victorville, California</a>
+        </div>
+        <div class="ft-soc">
+          <a href="https://www.facebook.com/DeVoll-Rubber-MFG-153860087987384/" class="soc">f</a>
+        </div>
+      </div>
+
+      <div class="ft-col">
+        <h4>Capabilities</h4>
+        <div class="svc-links">
+          <a href="#" class="svc-link">Lathe Cutting <span class="svc-arrow">→</span></a>
+          <a href="#" class="svc-link">Rubber Extrusions <span class="svc-arrow">→</span></a>
+          <a href="#" class="svc-link">Industrial Rollers <span class="svc-arrow">→</span></a>
+          <a href="#" class="svc-link">Waterjet Cutting <span class="svc-arrow">→</span></a>
+          <a href="#" class="svc-link">Molded Parts <span class="svc-arrow">→</span></a>
+          <a href="#" class="svc-link">Gaskets &amp; Seals <span class="svc-arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="ft-col">
+        <h4>Quick Quote</h4>
+        <p style="font-size:.82rem;color:var(--text-lo);line-height:1.8;margin-bottom:1.2rem;">Ready to get your rubber parts manufactured? We respond to every quote request.</p>
+        <div style="display:flex;flex-direction:column;gap:.5rem;">
+          <a href="#" class="btn btn-acid btn-sm" style="justify-content:center;">Get a Quote ▸</a>
+          <a href="#" class="btn btn-ghost btn-sm" style="justify-content:center;">Download Spec Sheet</a>
+        </div>
+        <div style="margin-top:1.8rem;">
+          <h4>Company</h4>
+          <ul style="margin-top:.8rem;">
+            <li><a href="#">About DeVoll</a></li>
+            <li><a href="#">Our Equipment</a></li>
+            <li><a href="#">Polymer Guide</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bot">
+      <span class="ft-copy">© 2026 DeVoll Rubber Mfg Group, Inc · Victorville, CA · devollrubber.com</span>
+      <span class="ft-copy">Family-owned since 1964 · All rights reserved</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+});
+
+function animRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animRing);
+}
+animRing();
+
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.transform = 'translate(-50%,-50%) scale(2)';
+    ring.style.width = '48px'; ring.style.height = '48px';
+    ring.style.borderColor = 'rgba(57,255,106,0.5)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+    ring.style.width = '32px'; ring.style.height = '32px';
+    ring.style.borderColor = 'rgba(0,229,255,0.4)';
+  });
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.sr').forEach(el => obs.observe(el));
+
+// Stagger children of sr grids
+document.querySelectorAll('.cap-grid, .mat-grid, .ind-grid, .testi-grid, .equip-grid, .process-steps, .about-matrix').forEach(grid => {
+  Array.from(grid.children).forEach((child, i) => {
+    child.style.transitionDelay = (i * 0.08) + 's';
+    child.classList.add('sr');
+    obs.observe(child);
+  });
+});
+
+// Animated number counter on pulse stats
+const pstats = document.querySelectorAll('.pstat-n');
+const statsObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const target = parseFloat(el.textContent);
+      if (!isNaN(target) && target > 1) {
+        let start = 0; const dur = 1200;
+        const startTime = performance.now();
+        function step(now) {
+          const t = Math.min((now - startTime) / dur, 1);
+          const ease = 1 - Math.pow(1 - t, 3);
+          el.textContent = Math.round(ease * target) + (el.textContent.includes('+') ? '+' : '');
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      statsObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+pstats.forEach(s => statsObs.observe(s));
+
+// Glitch effect randomizer on logo
+setInterval(() => {
+  const g = document.querySelector('.glitch');
+  if (g && Math.random() < 0.3) {
+    g.style.animation = 'none';
+    setTimeout(() => g.style.animation = '', 50);
+  }
+}, 3000);
+</script>
+</body>
+</html>

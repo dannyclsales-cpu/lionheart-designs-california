@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — SD Broncos</title>
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23f5a623'/%3E%3Ctext x='16' y='22' font-size='14' text-anchor='middle' fill='%23000' font-family='Arial' font-weight='bold'%3ESDB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary: #f5a623;
+        --primary-dark: #e09000;
+        --dark: #0a0a0a;
+        --darker: #050505;
+        --light: #fafafa;
+        --gray: #1a1a1a;
+        --overlay: rgba(0,0,0,0.85);
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+        font-family: 'Outfit', sans-serif;
+        background: var(--darker);
+        color: var(--light);
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+    
+    /* Floating Particles Background */
+    .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+    }
+    
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--primary);
+        border-radius: 50%;
+        opacity: 0.3;
+        animation: floatUp 15s linear infinite;
+    }
+    
+    @keyframes floatUp {
+        0% { transform: translateY(100vh) scale(0); opacity: 0; }
+        10% { opacity: 0.3; }
+        90% { opacity: 0.3; }
+        100% { transform: translateY(-100px) scale(1); opacity: 0; }
+    }
+    
+    .particle-logo {
+        position: absolute;
+        opacity: 0.08;
+        animation: floatUp 25s linear infinite;
+        filter: grayscale(100%);
+    }
+    
+    /* Header */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(180deg, var(--darker) 0%, transparent 100%);
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+    }
+    
+    .logo img {
+        height: 50px;
+        width: auto;
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--light);
+        letter-spacing: 1px;
+    }
+    
+    .logo-text span { color: var(--primary); }
+    
+    nav {
+        display: flex;
+        gap: 2rem;
+    }
+    
+    nav a {
+        color: var(--light);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+        position: relative;
+    }
+    
+    nav a:hover, nav a.active { color: var(--primary); }
+    nav a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.2s;
+    }
+    nav a:hover::after { width: 100%; }
+    
+    /* Hero */
+    .hero {
+        position: relative;
+        padding: 8rem 2rem 4rem;
+        text-align: center;
+        z-index: 1;
+    }
+    
+    .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, var(--light) 0%, var(--primary) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+        color: #888;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    /* Gallery */
+    .gallery-container {
+        position: relative;
+        z-index: 1;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1rem;
+    }
+    
+    .gallery-item {
+        position: relative;
+        aspect-ratio: 4/3;
+        overflow: hidden;
+        border-radius: 12px;
+        cursor: pointer;
+        background: var(--gray);
+    }
+    
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease, opacity 0.3s ease;
+        opacity: 0;
+    }
+    
+    .gallery-item img.loaded { opacity: 1; }
+    
+    .gallery-item:hover img {
+        transform: scale(1.08);
+    }
+    
+    .gallery-item::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .gallery-item:hover::after { opacity: 1; }
+    
+    .gallery-item .zoom-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        font-size: 2rem;
+        color: white;
+        z-index: 2;
+        transition: transform 0.3s;
+    }
+    
+    .gallery-item:hover .zoom-icon { transform: translate(-50%, -50%) scale(1); }
+    
+    /* Lightbox */
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        background: var(--overlay);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+    }
+    
+    .lightbox.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .lightbox img {
+        max-width: 90vw;
+        max-height: 85vh;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+        transform: scale(0.95);
+        transition: transform 0.3s;
+    }
+    
+    .lightbox.active img { transform: scale(1); }
+    
+    .lightbox-close {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        font-size: 3rem;
+        color: white;
+        cursor: pointer;
+        line-height: 1;
+        opacity: 0.7;
+        transition: opacity 0.2s;
+    }
+    
+    .lightbox-close:hover { opacity: 1; }
+    
+    .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 3rem;
+        color: white;
+        cursor: pointer;
+        padding: 1rem;
+        opacity: 0.7;
+        transition: opacity 0.2s;
+    }
+    
+    .lightbox-nav:hover { opacity: 1; }
+    .lightbox-prev { left: 2rem; }
+    .lightbox-next { right: 2rem; }
+    
+    .lightbox-counter {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 1rem;
+        opacity: 0.7;
+    }
+    
+    /* Footer */
+    footer {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 4rem 2rem;
+        color: #666;
+        font-size: 0.9rem;
+    }
+    
+    footer a { color: var(--primary); text-decoration: none; }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        header { padding: 1rem; }
+        .logo img { height: 40px; }
+        nav { gap: 1rem; }
+        nav a { font-size: 0.85rem; }
+        .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.5rem; }
+        .hero { padding: 7rem 1rem 3rem; }
+    }
+</style>
+</head>
+<body>
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Header -->
+    <header>
+        <a href="sd-broncos.html" class="logo">
+            <img src="SD Broncos Logos/sdbroncos_round_white-on-black.pdf" alt="SD Broncos">
+            <span class="logo-text">SD <span>BRONCOS</span></span>
+        </a>
+        <nav>
+            <a href="sd-broncos.html">Home</a>
+            <a href="sd-broncos.html#about">About</a>
+            <a href="sd-broncos.html#events">Events</a>
+            <a href="sd-broncos.html#partners">Partners</a>
+            <a href="sd-broncos.html#merch">Merch</a>
+            <a href="gallery.html" class="active">Gallery</a>
+            <a href="sd-broncos.html#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <object type="application/pdf" data="SD Broncos Logos/sdbroncos_banner-#-black.pdf" style="width: 500px; height: 80px; pointer-events: none;">
+            <img src="SD Broncos Logos/sdbroncos_round_white-on-black.pdf" alt="SD Broncos" style="max-width: 500px;">
+        </object>
+        <p>Stunning shots from our SD Broncos family. Click any photo to view fullscreen.</p>
+    </section>
+    
+    <!-- Gallery -->
+    <div class="gallery-container">
+        <div class="gallery-grid" id="gallery">
+            <!-- Images loaded via JS -->
+        </div>
+    </div>
+    
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">‹</span>
+        <span class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">›</span>
+        <img id="lightbox-img" src="" alt="">
+        <div class="lightbox-counter" id="lightbox-counter">1 / 1</div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 SD Broncos — San Diego Ford Bronco Club</p>
+    </footer>
+    
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDelay = Math.random() * 15 + 's';
+                p.style.animationDuration = (15 + Math.random() * 10) + 's';
+                container.appendChild(p);
+            }
+            for (let i = 0; i < 5; i++) {
+                const l = document.createElement('img');
+                l.className = 'particle-logo';
+                l.src = 'SD Broncos Logos/sdbroncos_round_white-on-black.pdf';
+                l.style.left = (10 + Math.random() * 80) + '%';
+                l.style.top = Math.random() * 100 + '%';
+                l.style.animationDelay = Math.random() * 25 + 's';
+                l.style.width = (60 + Math.random() * 60) + 'px';
+                container.appendChild(l);
+            }
+        }
+        createParticles();
+        
+        // AUTO-LOAD: Try common image patterns and load what exists
+        // Add new photos to the folder and they'll automatically appear!
+        
+        const prefixes = ['IMG_', 'SDB', 'Resized_', 'DSC_', 'photo_', ''];
+        const extensions = ['.jpg', '.JPG', '.jpeg', '.JPEG', '.png', '.PNG', '.gif', '.GIF'];
+        
+        const imageFiles = [];
+        
+        // Pattern 1: IMG_0000 - IMG_9999
+        for (let i = 1000; i <= 9999; i++) {
+            prefixes.forEach(prefix => {
+                extensions.forEach(ext => {
+                    imageFiles.push(prefix + i + ext);
+                });
+            });
+        }
+        
+        // Pattern 2: SDB1-SDB99
+        for (let i = 1; i <= 99; i++) {
+            imageFiles.push('SDB' + i + '.jpg');
+        }
+        
+        // Pattern 3: Resized_IMG_0000
+        for (let i = 1000; i <= 9999; i++) {
+            imageFiles.push('Resized_IMG_' + i + '.JPEG');
+        }
+        
+        // Pattern 4: Other known files
+        const knownFiles = [
+            'IMG_1073.JPG','IMG_1078.JPG','IMG_1202.jpg','IMG_1770.JPG','IMG_1789.JPG',
+            'IMG_1795.JPG','IMG_2279.JPG','IMG_2280.JPG','IMG_2281.jpg','IMG_2282.JPG',
+            'IMG_2284.JPG','IMG_2285.JPG','IMG_2286.JPG','IMG_2287.JPG','IMG_2288.JPG',
+            'IMG_2289.JPG','IMG_2291.JPG','IMG_2293.JPG','IMG_2303.JPG','IMG_2304.JPG',
+            'IMG_2305.JPG','IMG_2306.JPG','IMG_2307.JPG','IMG_2308.JPG','IMG_2311.JPG',
+            'IMG_2312.JPG','IMG_2313.JPG','IMG_2314.JPG','IMG_2315.JPG','IMG_2317.JPG',
+            'IMG_2319.JPG','IMG_2320.JPG','IMG_2322.JPG','IMG_2323.JPG','IMG_2324.JPG',
+            'IMG_2325.JPG','IMG_2327.JPG','IMG_2328.JPG','IMG_2329.JPG','IMG_2330.JPG',
+            'IMG_2330 2.JPG','IMG_2331.JPG','IMG_2332.JPG','IMG_2333.JPG','IMG_2336.JPG',
+            'IMG_2338.JPG','IMG_2339.JPG','IMG_2340.JPG','IMG_2342.JPG','IMG_2344.JPG',
+            'IMG_2345.JPG','IMG_2354.JPG','IMG_2355.JPG','IMG_2359.jpg','IMG_2360.JPG',
+            'IMG_2361.JPG','IMG_2362.JPG','IMG_2810.JPEG','IMG_3472.jpeg','IMG_3475.jpeg',
+            'IMG_5862.JPG','IMG_6134.JPG','IMG_6178.JPG','IMG_6438.jpeg','IMG_7970.JPG',
+            'IMG_7972.JPG','IMG_7973.JPG',
+            'SDB1.jpg','SDB2.jpg','SDB3.jpg','SDB4.jpg','SDB5.jpg','SDB6.jpg',
+            'a05bc688-f505-4a01-815d-f849c635952e.JPG',
+            'file_000000007718722f95ddb757e0ddf2ca.PNG'
+        ];
+        
+        const allFiles = [...new Set([...imageFiles, ...knownFiles])];
+        
+        // Build image list with folder path
+        const images = allFiles.map(src => ({
+            src: 'SD Broncos Pictures/' + src,
+            alt: 'SD Bronco'
+        }));
+        
+        // Render gallery - only show images that actually load
+        const gallery = document.getElementById('gallery');
+        let loadedCount = 0;
+        
+        images.forEach((img, idx) => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            
+            const image = document.createElement('img');
+            image.src = img.src;
+            image.alt = img.alt;
+            image.loading = 'lazy';
+            
+            // Hide if image doesn't load
+            image.onerror = () => { item.style.display = 'none'; };
+            image.onload = () => { 
+                image.classList.add('loaded'); 
+                loadedCount++;
+            };
+            
+            const icon = document.createElement('div');
+            icon.className = 'zoom-icon';
+            icon.textContent = '🔍';
+            
+            item.appendChild(image);
+            item.appendChild(icon);
+            item.onclick = () => openLightbox(idx);
+            gallery.appendChild(item);
+        });
+        
+        console.log('Gallery loaded - photos will appear as they load');
+        
+        // Lightbox - only navigate through visible images
+        let currentIndex = 0;
+        let validImages = [];
+        
+        function openLightbox(idx) {
+            // Filter to only visible images
+            validImages = images.filter((img, i) => {
+                const items = document.querySelectorAll('.gallery-item');
+                return items[i] && items[i].style.display !== 'none';
+            });
+            
+            // Find the actual index in valid images
+            const items = document.querySelectorAll('.gallery-item');
+            let validIdx = 0;
+            for (let i = 0; i < idx; i++) {
+                if (items[i] && items[i].style.display !== 'none') validIdx++;
+            }
+            
+            currentIndex = validIdx;
+            updateLightbox();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function navigateLightbox(dir) {
+            currentIndex += dir;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+            if (currentIndex >= images.length) currentIndex = 0;
+            updateLightbox();
+        }
+        
+        function updateLightbox() {
+            document.getElementById('lightbox-img').src = validImages[currentIndex].src;
+            document.getElementById('lightbox-counter').textContent = `${currentIndex + 1} / ${validImages.length}`;
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+        
+        // Click outside to close
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+    </script>
+</body>
+</html>
