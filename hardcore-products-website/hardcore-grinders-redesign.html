@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardcore Grinders & Products — Precision USA-Made Belt & Disc Grinders</title>
+<meta name="description" content="Professional-grade USA-made belt grinders and disc grinders for knife makers and fabricators. 30+ years expertise. Quick-change tooling. Built in Chino, California.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   HARDCORE GRINDERS — Design System
+   Aesthetic: Precision Industrial / American Steel
+   Dark chassis, amber heat, chrome details
+═══════════════════════════════════════════ */
+:root {
+  --void:       #0d0f10;
+  --steel-deep: #141618;
+  --steel:      #1b1e21;
+  --steel-mid:  #242830;
+  --steel-hi:   #2e3338;
+  --iron:       #3a4048;
+  --iron-hi:    #4a5260;
+  --forge:      #c23b18;      /* main red-orange */
+  --forge-hi:   #e04420;
+  --heat:       #e89a18;      /* amber accent */
+  --heat-hi:    #f5b030;
+  --chrome:     #8a95a0;
+  --chrome-hi:  #bcc8d4;
+  --white:      #ecf0f4;
+  --os:  'Oswald', sans-serif;
+  --ss:  'Source Serif 4', serif;
+  --mono:'IBM Plex Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--steel-deep);
+  color: var(--chrome-hi);
+  font-family: var(--ss);
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* Grain texture overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 9000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)' opacity='0.06'/%3E%3C/svg%3E");
+  opacity: .45; mix-blend-mode: overlay;
+}
+
+/* ─── UTILS ─── */
+.wrap { max-width: 1340px; margin: 0 auto; padding: 0 2.5rem; }
+.eyebrow {
+  font-family: var(--mono); font-size: .65rem; font-weight: 400;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--forge);
+  display: flex; align-items: center; gap: .9rem;
+}
+.eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--forge); flex-shrink: 0; }
+.eyebrow.amber { color: var(--heat); }
+.eyebrow.amber::before { background: var(--heat); }
+.eyebrow.dim { color: var(--chrome); }
+.eyebrow.dim::before { background: var(--iron-hi); }
+
+h2.section-title {
+  font-family: var(--os); font-weight: 700;
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  text-transform: uppercase; color: var(--white);
+  letter-spacing: .02em; line-height: .95; margin-top: .6rem;
+}
+
+/* ─── BUTTONS ─── */
+.btn {
+  display: inline-flex; align-items: center; gap: .55rem;
+  font-family: var(--os); font-weight: 500; font-size: .9rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all .25s ease; white-space: nowrap;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+.btn-fire {
+  background: var(--forge); color: #fff; padding: .9rem 2.2rem;
+}
+.btn-fire:hover { background: var(--forge-hi); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(194,59,24,.38); }
+.btn-fire-sm { padding: .65rem 1.5rem; font-size: .78rem; }
+.btn-steel {
+  background: transparent; color: var(--chrome-hi); padding: .88rem 2rem;
+  border: 1px solid var(--iron-hi);
+  clip-path: none;
+}
+.btn-steel:hover { border-color: var(--chrome-hi); color: var(--white); background: rgba(255,255,255,.04); }
+.btn-heat {
+  background: var(--heat); color: var(--void); padding: .88rem 2rem;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+.btn-heat:hover { background: var(--heat-hi); transform: translateY(-2px); }
+
+/* ─── TOP BAR ─── */
+.topbar {
+  background: var(--forge); padding: .4rem 0; text-align: center;
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .14em; color: rgba(255,255,255,.9);
+  position: relative; z-index: 500;
+}
+.topbar strong { color: #ffe0b0; }
+
+/* ─── HEADER ─── */
+header {
+  position: sticky; top: 0; z-index: 400;
+  background: rgba(13,15,16,.97);
+  border-bottom: 1px solid var(--iron);
+  backdrop-filter: blur(20px) saturate(1.4);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1340px; margin: 0 auto; padding: 1rem 2.5rem;
+  gap: 2rem;
+}
+.logo { text-decoration: none; display: flex; align-items: center; gap: 1rem; }
+.logo-mark {
+  width: 44px; height: 44px;
+  background: var(--forge);
+  display: flex; align-items: center; justify-content: center;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+.logo-mark svg { width: 26px; height: 26px; fill: #fff; }
+.logo-text { display: flex; flex-direction: column; gap: .08rem; }
+.logo-main {
+  font-family: var(--os); font-weight: 700; font-size: 1.4rem;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--white); line-height: 1;
+}
+.logo-main span { color: var(--forge); }
+.logo-sub {
+  font-family: var(--mono); font-size: .52rem; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--chrome);
+}
+nav.mainnav { display: flex; align-items: center; gap: .25rem; }
+.nav-link {
+  font-family: var(--os); font-weight: 400; font-size: .82rem;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--chrome); text-decoration: none; padding: .5rem .9rem;
+  transition: color .2s; position: relative;
+}
+.nav-link:hover, .nav-link.active { color: var(--white); }
+.nav-link.active::after {
+  content: ''; position: absolute; bottom: 0; left: .9rem; right: .9rem;
+  height: 1px; background: var(--forge);
+}
+.nav-cta { display: flex; align-items: center; gap: .75rem; }
+.icon-btn {
+  width: 38px; height: 38px; background: none; border: 1px solid var(--iron);
+  color: var(--chrome); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .2s; font-size: 1rem; text-decoration: none;
+}
+.icon-btn:hover { border-color: var(--forge); color: var(--white); }
+.cart-badge {
+  display: flex; align-items: center; gap: .6rem;
+  background: var(--forge); color: #fff;
+  font-family: var(--os); font-weight: 500; font-size: .78rem;
+  letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
+  padding: .48rem 1.2rem; transition: background .2s;
+  clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px));
+}
+.cart-badge:hover { background: var(--forge-hi); }
+.cart-count {
+  background: rgba(0,0,0,.25); border-radius: 50%;
+  width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
+  font-size: .65rem;
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative; min-height: 95vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(13,15,16,.2) 0%, rgba(13,15,16,.75) 60%, var(--steel-deep) 100%),
+    linear-gradient(105deg, rgba(194,59,24,.2) 0%, transparent 50%),
+    url('https://hardcoregrinderproducts.com/cdn/shop/files/QC-GRINDER-LARGE.jpg?v=1712679839&width=3840') center 30%/cover no-repeat;
+}
+
+/* Crosshatch grid */
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 65%, transparent 100%);
+}
+/* Diagonal accent slash */
+.hero-slash {
+  position: absolute; top: 0; right: 0;
+  width: 0; height: 0;
+  border-top: 100vh solid transparent;
+  border-right: 40vw solid rgba(194,59,24,.07);
+  pointer-events: none;
+}
+/* Scan line */
+.hero-scanline {
+  position: absolute; left: 0; right: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, rgba(194,59,24,.5) 40%, rgba(232,154,24,.6) 55%, rgba(194,59,24,.5) 70%, transparent 100%);
+  animation: scan 8s linear infinite;
+}
+@keyframes scan { 0%{top:-1px;opacity:1} 100%{top:100%;opacity:.3} }
+
+/* Corner decoration */
+.hero-corner {
+  position: absolute; top: 2rem; right: 2rem;
+  width: 120px; height: 120px;
+  border: 1px solid rgba(194,59,24,.3);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: .52rem; letter-spacing: .2em; color: var(--heat);
+  text-transform: uppercase; line-height: 2;
+  clip-path: polygon(15% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%, 0% 15%);
+  background: rgba(13,15,16,.7); backdrop-filter: blur(8px);
+}
+.hero-corner-num { font-family: var(--os); font-weight: 700; font-size: 2rem; color: var(--white); line-height: 1; }
+
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 2.5rem 6rem;
+  max-width: 1340px; margin: 0 auto; width: 100%;
+}
+.hero-label { margin-bottom: 1.8rem; }
+.hero h1 {
+  font-family: var(--os); font-weight: 700;
+  font-size: clamp(4.5rem, 11vw, 10.5rem);
+  line-height: .88; text-transform: uppercase;
+  letter-spacing: .01em; margin-bottom: 2rem;
+  color: var(--white);
+}
+.hero h1 .line2 { color: var(--forge); display: block; }
+.hero h1 .line3 { -webkit-text-stroke: 2px rgba(188,200,212,.45); color: transparent; display: block; }
+.hero-body {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 3rem; flex-wrap: wrap;
+}
+.hero-desc {
+  font-family: var(--ss); font-weight: 300; font-size: 1.05rem;
+  color: var(--chrome-hi); max-width: 480px; line-height: 1.8;
+}
+.hero-desc strong { font-weight: 600; color: var(--white); }
+.hero-actions { display: flex; gap: .75rem; align-items: center; margin-top: 1.8rem; flex-wrap: wrap; }
+.hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 1.5rem; }
+.hero-spec-chip {
+  display: flex; flex-direction: column; align-items: center;
+  background: rgba(26,30,33,.85); backdrop-filter: blur(10px);
+  border: 1px solid var(--iron); padding: 1rem 1.5rem; min-width: 100px;
+}
+.chip-val { font-family: var(--os); font-weight: 700; font-size: 2rem; color: var(--white); line-height: 1; }
+.chip-val span { color: var(--forge); }
+.chip-lbl { font-family: var(--mono); font-size: .58rem; letter-spacing: .18em; color: var(--chrome); text-transform: uppercase; margin-top: .25rem; text-align: center; }
+.hero-chips { display: flex; gap: 1px; background: var(--iron); border: 1px solid var(--iron); }
+
+/* Lead time badge */
+.lead-badge {
+  display: flex; align-items: center; gap: .75rem;
+  background: rgba(232,154,24,.12); border: 1px solid rgba(232,154,24,.3);
+  padding: .65rem 1.1rem;
+}
+.lead-dot { width: 8px; height: 8px; background: var(--heat); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(1.3)} }
+.lead-text { font-family: var(--mono); font-size: .65rem; letter-spacing: .12em; color: var(--heat); text-transform: uppercase; }
+
+/* Stats strip */
+.stats-strip { background: rgba(10,11,12,.95); border-top: 1px solid var(--iron); border-bottom: 1px solid var(--iron); }
+.stats-inner { display: flex; max-width: 1340px; margin: 0 auto; }
+.stat { flex: 1; padding: 1.6rem 2rem; text-align: center; border-right: 1px solid var(--iron); position: relative; overflow: hidden; }
+.stat:last-child { border-right: none; }
+.stat::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--forge); transform: scaleX(0); transition: transform .4s ease;
+}
+.stat:hover::before { transform: scaleX(1); }
+.stat-n { font-family: var(--os); font-weight: 700; font-size: 2.8rem; color: var(--white); line-height: 1; }
+.stat-n em { color: var(--forge); font-style: normal; }
+.stat-l { font-family: var(--mono); font-size: .6rem; letter-spacing: .2em; color: var(--chrome); text-transform: uppercase; margin-top: .25rem; }
+
+/* ─── MARQUEE ─── */
+.marquee-wrap { background: var(--steel-mid); overflow: hidden; border-top: 1px solid var(--iron); border-bottom: 1px solid var(--iron); }
+.marquee-track { display: flex; animation: marquee 24s linear infinite; width: max-content; }
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee-item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: .9rem 2.5rem; border-right: 1px solid var(--iron);
+  font-family: var(--os); font-weight: 500; font-size: .9rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--chrome);
+  white-space: nowrap;
+}
+.marquee-item .dot { color: var(--forge); font-size: 1.2rem; line-height: 1; }
+
+/* ─── SECTION FRAME ─── */
+.section { padding: 6.5rem 0; }
+.section-dark { background: var(--steel-deep); }
+.section-mid { background: var(--steel); }
+.section-deep { background: var(--void); }
+.section-head { margin-bottom: 4rem; }
+.section-head.split { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+
+/* ─── CATEGORIES ─── */
+.cat-mosaic { display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto; gap: 2px; background: var(--iron); border: 1px solid var(--iron); }
+.cat-card {
+  background: var(--steel-mid); position: relative; overflow: hidden;
+  text-decoration: none; color: inherit; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 2rem; transition: background .3s;
+  cursor: pointer; min-height: 220px;
+}
+.cat-card:hover { background: var(--steel-hi); }
+.cat-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+  background: var(--forge); transition: width .4s ease;
+}
+.cat-card:hover::after { width: 100%; }
+/* Mosaic layout */
+.cat-card:nth-child(1) { grid-column: span 5; min-height: 360px;
+  background-image: linear-gradient(to right, rgba(27,30,33,.97) 30%, rgba(27,30,33,.65) 100%), url('https://hardcoregrinderproducts.com/cdn/shop/files/QC-GRINDER-LARGE.jpg?v=1712679839&width=900') right/cover no-repeat;
+}
+.cat-card:nth-child(2) { grid-column: span 4; }
+.cat-card:nth-child(3) { grid-column: span 3; }
+.cat-card:nth-child(4) { grid-column: span 4; }
+.cat-card:nth-child(5) { grid-column: span 4; background-image: linear-gradient(rgba(27,30,33,.88), rgba(27,30,33,.75)), url('https://hardcoregrinderproducts.com/cdn/shop/files/12_Disc_Grinder_3.heic?v=1749844518&width=600') center/cover; }
+.cat-card:nth-child(6) { grid-column: span 4; }
+.cat-num { font-family: var(--mono); font-size: .6rem; letter-spacing: .2em; color: var(--forge); opacity: .8; margin-bottom: .6rem; }
+.cat-name { font-family: var(--os); font-weight: 600; font-size: 1.35rem; text-transform: uppercase; color: var(--white); letter-spacing: .04em; margin-bottom: .4rem; }
+.cat-desc { font-size: .8rem; color: var(--chrome); line-height: 1.55; max-width: 260px; }
+.cat-arrow {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  width: 32px; height: 32px; border: 1px solid var(--iron-hi);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--chrome); font-size: .9rem; transition: all .3s;
+}
+.cat-card:hover .cat-arrow { background: var(--forge); border-color: var(--forge); color: #fff; transform: rotate(45deg); }
+
+/* ─── FLAGSHIP PRODUCT ─── */
+.flagship { background: var(--steel); }
+.flagship-grid { display: grid; grid-template-columns: 1.05fr .95fr; min-height: 680px; border: 1px solid var(--iron); }
+.flagship-media { position: relative; overflow: hidden; background: var(--steel-mid); }
+.flagship-media img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.1) saturate(.9); transition: transform .8s ease, filter .4s; display: block; }
+.flagship-media:hover img { transform: scale(1.04); filter: contrast(1.15) saturate(1.05); }
+.flagship-media-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(13,15,16,.9) 0%, transparent 60%);
+  padding: 2rem;
+}
+.flagship-media-tag { display: flex; gap: .5rem; flex-wrap: wrap; }
+.media-tag {
+  font-family: var(--mono); font-size: .6rem; letter-spacing: .12em;
+  padding: .3rem .7rem; background: rgba(13,15,16,.85); border: 1px solid var(--iron-hi);
+  color: var(--chrome-hi); text-transform: uppercase;
+}
+.media-tag.fire { background: rgba(194,59,24,.2); border-color: rgba(194,59,24,.4); color: var(--forge-hi); }
+.flagship-info { padding: 4rem; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid var(--iron); }
+.flagship-price-block { margin: 1.2rem 0 2rem; }
+.flagship-price { font-family: var(--os); font-weight: 700; font-size: 3.5rem; color: var(--heat); line-height: 1; }
+.flagship-price sub { font-size: 1.2rem; vertical-align: middle; color: var(--chrome); }
+.flagship-avail {
+  display: inline-flex; align-items: center; gap: .6rem;
+  margin-top: .75rem; font-family: var(--mono); font-size: .65rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--heat);
+}
+.flagship-avail .dot { width: 7px; height: 7px; background: var(--heat); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+.spec-list { display: flex; flex-direction: column; gap: .6rem; margin: 1.8rem 0 2.5rem; }
+.spec-row { display: flex; align-items: flex-start; gap: .8rem; font-size: .88rem; }
+.spec-row::before {
+  content: '▸'; color: var(--forge); font-size: .7rem; flex-shrink: 0; margin-top: .15rem;
+  font-family: var(--os);
+}
+.spec-row strong { color: var(--white); font-family: var(--ss); font-weight: 600; margin-right: .3rem; }
+.spec-row span { color: var(--chrome); }
+.flagship-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+/* Packages */
+.pkg-tabs { margin-top: 2.5rem; border-top: 1px solid var(--iron); padding-top: 2rem; }
+.pkg-label-row { display: flex; gap: .25rem; margin-bottom: 1.2rem; }
+.pkg-tab {
+  font-family: var(--os); font-weight: 500; font-size: .75rem; letter-spacing: .08em;
+  text-transform: uppercase; padding: .42rem 1rem; background: none;
+  border: 1px solid var(--iron); color: var(--chrome); cursor: pointer; transition: all .2s;
+}
+.pkg-tab.active, .pkg-tab:hover { background: var(--steel-deep); border-color: var(--iron-hi); color: var(--white); }
+.pkg-tab.active { border-color: var(--forge); color: var(--forge); }
+.pkg-content { display: none; }
+.pkg-content.active { display: flex; flex-direction: column; gap: .4rem; }
+.pkg-item { font-family: var(--mono); font-size: .7rem; letter-spacing: .08em; color: var(--chrome); display: flex; align-items: center; gap: .6rem; }
+.pkg-item::before { content: '✓'; color: var(--heat); }
+
+/* ─── PRODUCTS GRID ─── */
+.prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--iron); border: 1px solid var(--iron); }
+.prod-card { background: var(--steel-mid); position: relative; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: background .25s; }
+.prod-card:hover { background: var(--steel-hi); }
+.prod-img-wrap { overflow: hidden; aspect-ratio: 1; background: var(--steel); }
+.prod-img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(20%) contrast(1.05); transition: transform .55s ease, filter .3s; }
+.prod-card:hover .prod-img { transform: scale(1.06); filter: grayscale(0%) contrast(1.1); }
+.prod-body { padding: 1.2rem 1.3rem 1.5rem; border-top: 1px solid var(--iron); flex: 1; display: flex; flex-direction: column; }
+.prod-cat { font-family: var(--mono); font-size: .58rem; letter-spacing: .18em; color: var(--forge); text-transform: uppercase; margin-bottom: .35rem; }
+.prod-name { font-family: var(--os); font-weight: 600; font-size: 1rem; text-transform: uppercase; color: var(--white); letter-spacing: .04em; line-height: 1.2; margin-bottom: auto; padding-bottom: .8rem; }
+.prod-foot { display: flex; align-items: center; justify-content: space-between; padding-top: .8rem; border-top: 1px solid var(--iron); }
+.prod-price { font-family: var(--os); font-weight: 700; font-size: 1.15rem; color: var(--heat); }
+.prod-add { font-family: var(--mono); font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; background: none; border: 1px solid var(--iron); color: var(--chrome); padding: .35rem .65rem; cursor: pointer; transition: all .2s; }
+.prod-add:hover { background: var(--forge); border-color: var(--forge); color: #fff; }
+.pill { position: absolute; top: .8rem; left: .8rem; font-family: var(--mono); font-size: .56rem; letter-spacing: .1em; text-transform: uppercase; padding: .22rem .55rem; z-index: 1; }
+.pill-usa { background: var(--forge); color: #fff; }
+.pill-sold { background: rgba(58,64,72,.9); color: var(--chrome); }
+.pill-heat { background: rgba(232,154,24,.15); border: 1px solid rgba(232,154,24,.4); color: var(--heat); }
+
+/* ─── WHY HARDCORE ─── */
+.why-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--iron); }
+.why-visual { position: relative; overflow: hidden; min-height: 580px; background: var(--steel-mid); }
+.why-visual img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(35%) contrast(1.1); display: block; }
+.why-visual::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 50%, var(--steel) 100%);
+}
+.why-visual-tag {
+  position: absolute; top: 2rem; left: 2rem; z-index: 2;
+  background: var(--forge); padding: 1rem 1.5rem; display: flex; flex-direction: column;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+}
+.why-tag-n { font-family: var(--os); font-weight: 700; font-size: 3rem; color: #fff; line-height: 1; }
+.why-tag-l { font-family: var(--mono); font-size: .58rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.75); margin-top: .2rem; }
+.why-text { background: var(--steel); padding: 4.5rem; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid var(--iron); }
+.why-intro { font-family: var(--ss); font-size: 1rem; font-style: italic; color: var(--chrome-hi); line-height: 1.8; margin: 1.2rem 0 2.5rem; max-width: 440px; }
+.feats { display: flex; flex-direction: column; gap: 1.8rem; }
+.feat { display: flex; gap: 1.2rem; align-items: flex-start; }
+.feat-ico {
+  width: 44px; height: 44px; flex-shrink: 0;
+  border: 1px solid rgba(194,59,24,.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.15rem; transition: all .3s;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+}
+.feat:hover .feat-ico { background: var(--forge); border-color: var(--forge); }
+.feat-title { font-family: var(--os); font-weight: 600; font-size: .95rem; text-transform: uppercase; letter-spacing: .06em; color: var(--white); margin-bottom: .3rem; }
+.feat-desc { font-size: .85rem; color: var(--chrome); line-height: 1.65; }
+
+/* ─── JOSH'S STORY ─── */
+.story { background: var(--void); }
+.story-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 6rem; align-items: center; }
+.story-text .quote {
+  font-family: var(--ss); font-size: clamp(1.3rem, 2.5vw, 2rem);
+  font-style: italic; font-weight: 300; color: var(--chrome-hi); line-height: 1.65;
+  border-left: 3px solid var(--forge); padding-left: 2rem; margin: 2rem 0 2.5rem;
+}
+.story-text p { font-size: .95rem; color: var(--chrome); line-height: 1.85; margin-bottom: 1.2rem; }
+.story-text p strong { color: var(--white); font-family: var(--ss); font-weight: 600; }
+.story-side { display: flex; flex-direction: column; gap: 2px; background: var(--iron); border: 1px solid var(--iron); }
+.story-stat-box { background: var(--steel-mid); padding: 2.5rem; }
+.story-stat-box:first-child { background: var(--forge); }
+.ssn { font-family: var(--os); font-weight: 700; font-size: 4rem; color: var(--white); line-height: 1; }
+.ssn em { color: rgba(255,255,255,.55); font-style: normal; font-size: 2rem; }
+.ssl { font-family: var(--mono); font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.7); margin-top: .4rem; }
+.story-stat-box:not(:first-child) .ssn { color: var(--white); }
+.story-stat-box:not(:first-child) .ssn em { color: var(--forge); }
+.story-stat-box:not(:first-child) .ssl { color: var(--chrome); }
+
+/* ─── COMPARE ─── */
+.compare { background: var(--steel-deep); }
+.compare-table { width: 100%; border-collapse: collapse; border: 1px solid var(--iron); }
+.compare-table th, .compare-table td { padding: 1rem 1.4rem; border: 1px solid var(--iron); text-align: center; }
+.compare-table thead th {
+  font-family: var(--os); font-weight: 600; font-size: .85rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--chrome); background: var(--steel-mid);
+}
+.compare-table thead th:nth-child(2) { background: var(--forge); color: #fff; }
+.compare-table thead th:first-child { text-align: left; background: var(--steel); }
+.compare-table tbody tr { transition: background .2s; }
+.compare-table tbody tr:hover td { background: rgba(255,255,255,.02); }
+.compare-table td { font-family: var(--ss); font-size: .88rem; color: var(--chrome); background: var(--steel-mid); }
+.compare-table td:first-child { text-align: left; font-family: var(--os); font-weight: 500; font-size: .82rem; text-transform: uppercase; letter-spacing: .06em; color: var(--chrome-hi); background: var(--steel); }
+.compare-table td:nth-child(2) { background: rgba(194,59,24,.06); }
+.check { color: #5dc87a; font-size: 1.1rem; }
+.cross { color: var(--iron-hi); font-size: 1rem; }
+.partial { color: var(--heat); font-size: .85rem; font-family: var(--mono); }
+
+/* ─── TESTIMONIALS ─── */
+.testi { background: var(--steel); }
+.review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--iron); border: 1px solid var(--iron); }
+.review-card { background: var(--steel-mid); padding: 2.2rem 2rem 1.8rem; display: flex; flex-direction: column; }
+.stars { color: var(--heat); font-size: .82rem; letter-spacing: .06em; margin-bottom: 1rem; }
+.review-body {
+  font-family: var(--ss); font-size: .9rem; font-style: italic; font-weight: 300;
+  color: var(--chrome-hi); line-height: 1.75; flex: 1; margin-bottom: 1.5rem;
+  position: relative; padding-left: 1.2rem;
+}
+.review-body::before { content: '"'; position: absolute; left: 0; top: -.4rem; font-size: 2.5rem; color: var(--forge); line-height: 1; font-style: normal; }
+.review-foot { display: flex; align-items: center; gap: .85rem; border-top: 1px solid var(--iron); padding-top: 1.2rem; }
+.rev-av { width: 38px; height: 38px; background: var(--steel); border: 1px solid var(--iron); display: flex; align-items: center; justify-content: center; font-family: var(--os); font-weight: 700; font-size: 1rem; color: var(--forge); flex-shrink: 0; }
+.rev-name { font-family: var(--os); font-weight: 500; font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; color: var(--white); }
+.rev-meta { display: flex; flex-direction: column; }
+.rev-prod { font-family: var(--mono); font-size: .6rem; color: var(--chrome); letter-spacing: .08em; }
+
+/* Featured review (wide) */
+.review-card.featured { grid-column: span 2; flex-direction: row; gap: 2.5rem; align-items: center; }
+.review-card.featured .review-body { font-size: 1rem; }
+.review-card.featured .rev-av { width: 56px; height: 56px; font-size: 1.3rem; }
+
+/* ─── USA BAND ─── */
+.usa-band { background: var(--forge); padding: 5.5rem 0; position: relative; overflow: hidden; }
+.usa-band::before {
+  content: 'MADE IN USA'; position: absolute; right: -2rem; top: 50%; transform: translateY(-50%);
+  font-family: var(--os); font-weight: 700; font-size: 13rem; letter-spacing: -.04em;
+  color: rgba(0,0,0,.1); pointer-events: none; white-space: nowrap; user-select: none; line-height: 1;
+}
+.usa-inner { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 4rem; }
+.usa-text {}
+.usa-text h2 { font-family: var(--os); font-weight: 700; font-size: clamp(2.5rem, 5vw, 4.5rem); text-transform: uppercase; color: #fff; line-height: .95; }
+.usa-text p { font-family: var(--ss); font-size: 1rem; color: rgba(255,255,255,.8); line-height: 1.75; margin-top: 1rem; max-width: 380px; }
+.usa-divider { width: 1px; background: rgba(255,255,255,.2); align-self: stretch; }
+.usa-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.usa-fact-box { background: rgba(0,0,0,.12); padding: 1.5rem; }
+.ufn { font-family: var(--os); font-weight: 700; font-size: 2.8rem; color: #fff; line-height: 1; }
+.ufl { font-family: var(--mono); font-size: .58rem; letter-spacing: .18em; color: rgba(255,255,255,.65); text-transform: uppercase; margin-top: .3rem; }
+
+/* ─── NEWSLETTER ─── */
+.nl { background: var(--void); border-top: 1px solid var(--iron); padding: 4.5rem 0; }
+.nl-inner { display: flex; align-items: center; justify-content: space-between; gap: 3rem; flex-wrap: wrap; }
+.nl-text h3 { font-family: var(--os); font-weight: 700; font-size: 2rem; text-transform: uppercase; color: var(--white); line-height: 1; }
+.nl-text p { font-size: .88rem; color: var(--chrome); margin-top: .5rem; font-family: var(--ss); }
+.nl-form { display: flex; min-width: 400px; }
+.nl-input {
+  flex: 1; background: var(--steel); border: 1px solid var(--iron); border-right: none;
+  color: var(--white); font-family: var(--mono); font-size: .8rem; letter-spacing: .05em;
+  padding: .9rem 1.3rem; outline: none; transition: border-color .2s;
+}
+.nl-input::placeholder { color: var(--chrome); }
+.nl-input:focus { border-color: var(--forge); }
+.nl-go {
+  background: var(--forge); color: #fff; border: none; cursor: pointer;
+  font-family: var(--os); font-weight: 600; font-size: .82rem;
+  letter-spacing: .12em; text-transform: uppercase; padding: 0 2rem; transition: background .2s;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+}
+.nl-go:hover { background: var(--forge-hi); }
+
+/* ─── FOOTER ─── */
+footer { background: #09090b; border-top: 1px solid var(--iron); }
+.footer-grid {
+  display: grid; grid-template-columns: 2.2fr 1fr 1fr 1fr;
+  gap: 4rem; padding: 5rem 0 4rem;
+  max-width: 1340px; margin: 0 auto; padding-left: 2.5rem; padding-right: 2.5rem;
+}
+.footer-brand-desc { font-family: var(--ss); font-size: .88rem; color: var(--chrome); line-height: 1.75; max-width: 290px; margin-top: 1rem; }
+.footer-contact { margin-top: 1.5rem; display: flex; flex-direction: column; gap: .5rem; }
+.footer-contact a { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; color: var(--chrome); text-decoration: none; transition: color .2s; }
+.footer-contact a:hover { color: var(--white); }
+.footer-socials { display: flex; gap: .5rem; margin-top: 1.5rem; }
+.soc-btn { width: 36px; height: 36px; border: 1px solid var(--iron); display: flex; align-items: center; justify-content: center; color: var(--chrome); font-size: .85rem; text-decoration: none; transition: all .2s; }
+.soc-btn:hover { border-color: var(--forge); color: var(--white); background: rgba(194,59,24,.1); }
+.footer-col h4 { font-family: var(--os); font-weight: 600; font-size: .85rem; text-transform: uppercase; letter-spacing: .1em; color: var(--white); margin-bottom: 1.4rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+.footer-col li a { font-family: var(--ss); font-size: .85rem; color: var(--chrome); text-decoration: none; transition: color .2s; }
+.footer-col li a:hover { color: var(--white); }
+.footer-bottom {
+  border-top: 1px solid var(--iron);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 2.5rem; max-width: 1340px; margin: 0 auto;
+  gap: 1rem; flex-wrap: wrap;
+}
+.footer-copy { font-family: var(--mono); font-size: .6rem; letter-spacing: .12em; color: var(--chrome); }
+.footer-payments { display: flex; gap: .4rem; align-items: center; }
+.pay-badge { font-family: var(--mono); font-size: .55rem; letter-spacing: .08em; text-transform: uppercase; padding: .25rem .55rem; border: 1px solid var(--iron); color: var(--chrome); }
+
+/* ─── SCROLL REVEAL ─── */
+.sr { opacity: 0; transform: translateY(30px); transition: opacity .65s ease, transform .65s ease; }
+.sr.vis { opacity: 1; transform: none; }
+.sr-delay-1 { transition-delay: .1s; }
+.sr-delay-2 { transition-delay: .2s; }
+.sr-delay-3 { transition-delay: .3s; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1100px) {
+  .prod-grid { grid-template-columns: repeat(3, 1fr); }
+  .flagship-grid { grid-template-columns: 1fr 1fr; }
+  .cat-card:nth-child(1) { grid-column: span 7; }
+  .cat-card:nth-child(2) { grid-column: span 5; }
+  .cat-card:nth-child(3) { grid-column: span 4; }
+  .cat-card:nth-child(4) { grid-column: span 4; }
+  .cat-card:nth-child(5) { grid-column: span 4; }
+  .cat-card:nth-child(6) { grid-column: span 4; }
+}
+@media (max-width: 900px) {
+  nav.mainnav { display: none; }
+  .flagship-grid, .why-wrap, .story-grid, .usa-inner { grid-template-columns: 1fr; }
+  .usa-divider { display: none; }
+  .why-wrap { border: 1px solid var(--iron); }
+  .why-visual { min-height: 320px; }
+  .review-card.featured { grid-column: span 1; flex-direction: column; }
+  .cat-mosaic { grid-template-columns: 1fr 1fr; }
+  .cat-card:nth-child(n) { grid-column: span 1; }
+  .prod-grid { grid-template-columns: repeat(2, 1fr); }
+  .review-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .nl-form { min-width: unset; width: 100%; }
+  .stats-inner { flex-wrap: wrap; }
+  .stat { min-width: 50%; border-bottom: 1px solid var(--iron); }
+  .compare-table { font-size: .78rem; }
+  .compare-table th, .compare-table td { padding: .7rem .8rem; }
+  .hero-right { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BANNER -->
+<div class="topbar">
+  🇺🇸 Proudly Made in Chino, California &nbsp;·&nbsp; <strong>Free shipping on orders over $250</strong> &nbsp;·&nbsp; Call Josh: <strong>(909) 627-3737</strong>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 2L3 7v10l9 5 9-5V7L12 2zm0 2.5l6.5 3.6v7.8L12 19.5l-6.5-3.6V8.1L12 4.5z"/></svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-main">Hardcore<span>.</span></span>
+        <span class="logo-sub">Grinders &amp; Products · Chino, CA</span>
+      </div>
+    </a>
+    <nav class="mainnav">
+      <a href="#" class="nav-link active">Home</a>
+      <a href="#" class="nav-link">Grinders</a>
+      <a href="#" class="nav-link">Tooling</a>
+      <a href="#" class="nav-link">Accessories</a>
+      <a href="#" class="nav-link">Compare</a>
+      <a href="#" class="nav-link">About Josh</a>
+      <a href="#" class="nav-link">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#" class="icon-btn" title="Search">&#9906;</a>
+      <a href="#" class="icon-btn" title="Account">&#128100;</a>
+      <a href="#" class="cart-badge">
+        &#128722; Cart
+        <span class="cart-count">0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-slash"></div>
+  <div class="hero-scanline"></div>
+  <div class="hero-corner">
+    <span>Est.</span>
+    <span class="hero-corner-num">1990</span>
+    <span>Chino CA</span>
+    <span>USA</span>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-label">
+      <span class="eyebrow amber">Precision Engineered · 30+ Years of Craft</span>
+    </div>
+    <h1>Built for<span class="line2">Knife</span><span class="line3">Makers.</span></h1>
+    <div class="hero-body">
+      <div>
+        <p class="hero-desc">Professional-grade belt and disc grinders <strong>made in the USA</strong> for craftsmen who refuse to compromise. Billet aluminum. Baldor power. Quick-change everything.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-fire">Shop All Grinders &nbsp;→</a>
+          <a href="#" class="btn btn-steel">Watch It Run</a>
+          <div class="lead-badge">
+            <div class="lead-dot"></div>
+            <span class="lead-text">4–6 week lead time · Pre-order now</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-chips">
+          <div class="hero-spec-chip">
+            <span class="chip-val">2<span>HP</span></span>
+            <span class="chip-lbl">Baldor Motor</span>
+          </div>
+          <div class="hero-spec-chip">
+            <span class="chip-val">6000<span></span></span>
+            <span class="chip-lbl">SFPM Max</span>
+          </div>
+          <div class="hero-spec-chip">
+            <span class="chip-val">100<span>%</span></span>
+            <span class="chip-lbl">USA Made</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-n">30<em>+</em></div>
+      <div class="stat-l">Years of Expertise</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">100<em>%</em></div>
+      <div class="stat-l">USA Manufactured</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">2<em>HP</em></div>
+      <div class="stat-l">Baldor Motor Power</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">6000</div>
+      <div class="stat-l">SFPM Variable Speed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">5<em>★</em></div>
+      <div class="stat-l">Average Customer Rating</div>
+    </div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="dot">◆</span> Quick-Change Tooling System</div>
+    <div class="marquee-item"><span class="dot">◆</span> Machined in Chino, California</div>
+    <div class="marquee-item"><span class="dot">◆</span> Baldor 1.5–2 HP Motors</div>
+    <div class="marquee-item"><span class="dot">◆</span> Billet Aluminum Construction</div>
+    <div class="marquee-item"><span class="dot">◆</span> 110V &amp; 220V Available</div>
+    <div class="marquee-item"><span class="dot">◆</span> CAD-Engineered Tolerances</div>
+    <div class="marquee-item"><span class="dot">◆</span> Personal Service from Josh</div>
+    <div class="marquee-item"><span class="dot">◆</span> Warranty Backed</div>
+    <div class="marquee-item"><span class="dot">◆</span> Quick-Change Tooling System</div>
+    <div class="marquee-item"><span class="dot">◆</span> Machined in Chino, California</div>
+    <div class="marquee-item"><span class="dot">◆</span> Baldor 1.5–2 HP Motors</div>
+    <div class="marquee-item"><span class="dot">◆</span> Billet Aluminum Construction</div>
+    <div class="marquee-item"><span class="dot">◆</span> 110V &amp; 220V Available</div>
+    <div class="marquee-item"><span class="dot">◆</span> CAD-Engineered Tolerances</div>
+    <div class="marquee-item"><span class="dot">◆</span> Personal Service from Josh</div>
+    <div class="marquee-item"><span class="dot">◆</span> Warranty Backed</div>
+  </div>
+</div>
+
+<!-- ═══════ SHOP CATEGORIES ═══════ -->
+<section class="section section-dark">
+  <div class="wrap">
+    <div class="section-head sr">
+      <span class="eyebrow">Product Lines</span>
+      <h2 class="section-title">Find Your Build</h2>
+    </div>
+    <div class="cat-mosaic sr">
+      <a href="#" class="cat-card">
+        <div class="cat-arrow">↗</div>
+        <div class="cat-num">01 — Flagship</div>
+        <div class="cat-name">QC Belt Grinders</div>
+        <div class="cat-desc">2"×72" quick-change belt grinders. The fastest tooling swap on the market, precision-machined from solid billet aluminum.</div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-arrow">↗</div>
+        <div class="cat-num">02</div>
+        <div class="cat-name">BGA / BGB Grinders</div>
+        <div class="cat-desc">6"×60" and 2"×72" belt grinder options for heavier stock removal and professional shop use.</div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-arrow">↗</div>
+        <div class="cat-num">03</div>
+        <div class="cat-name">Disc Grinders</div>
+        <div class="cat-desc">9" and 12" precision disc grinders. Dead-flat, dead-accurate — built on a 3/4" aluminum base.</div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-arrow">↗</div>
+        <div class="cat-num">04</div>
+        <div class="cat-name">Knifemaker Tooling</div>
+        <div class="cat-desc">Blade grinding fixtures, angle setters, work rests, miter attachments — every tool your bench demands.</div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-arrow">↗</div>
+        <div class="cat-num">05</div>
+        <div class="cat-name">Accessories &amp; Parts</div>
+        <div class="cat-desc">Quench plates, screw cutters, knife vises, buffing mandrels, belt spools, replacement parts.</div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-arrow">↗</div>
+        <div class="cat-num">06</div>
+        <div class="cat-name">CNC Machine Work</div>
+        <div class="cat-desc">Custom precision machining for your one-off part or production run. Contact Josh directly for quotes.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FLAGSHIP PRODUCT ═══════ -->
+<section class="flagship section section-mid">
+  <div class="wrap">
+    <div class="section-head sr">
+      <span class="eyebrow amber">Featured Build</span>
+      <h2 class="section-title">QC Quick-Change<br>2" × 72" Belt Grinder</h2>
+    </div>
+    <div class="flagship-grid sr">
+      <div class="flagship-media">
+        <img src="https://hardcoregrinderproducts.com/cdn/shop/files/QC-GRINDER-LARGE.jpg?v=1712679839&width=1200" alt="QC Quick-Change Belt Grinder" loading="lazy">
+        <div class="flagship-media-overlay">
+          <div class="flagship-media-tag">
+            <span class="media-tag fire">Quick-Change System</span>
+            <span class="media-tag">Billet Aluminum</span>
+            <span class="media-tag">Variable Speed</span>
+          </div>
+        </div>
+      </div>
+      <div class="flagship-info">
+        <span class="eyebrow">Flagship · Most Popular</span>
+        <div class="flagship-price-block">
+          <div class="flagship-price"><sub>from </sub>$4,825</div>
+          <div class="flagship-avail">
+            <span class="dot"></span>
+            High demand · 4–6 week lead time · Pre-order open
+          </div>
+        </div>
+        <div class="spec-list">
+          <div class="spec-row"><strong>Motor:</strong><span>2 HP Baldor, 110V or 220V</span></div>
+          <div class="spec-row"><strong>Speed:</strong><span>600–6,000 SFPM variable</span></div>
+          <div class="spec-row"><strong>Belt Size:</strong><span>2" × 72"</span></div>
+          <div class="spec-row"><strong>Tilt:</strong><span>0° to 90° (vertical or horizontal)</span></div>
+          <div class="spec-row"><strong>Frame:</strong><span>Cast &amp; billet aluminum — USA machined</span></div>
+          <div class="spec-row"><strong>Bearings:</strong><span>Oversized shafts &amp; bearings throughout</span></div>
+          <div class="spec-row"><strong>Feel:</strong><span>"Velvet touch" — silky smooth controls</span></div>
+        </div>
+
+        <!-- Package tabs -->
+        <div class="pkg-tabs">
+          <span class="eyebrow dim" style="margin-bottom:.9rem;">Choose Your Package</span>
+          <div class="pkg-label-row">
+            <button class="pkg-tab active" onclick="switchPkg(this,'p1')">Package 1</button>
+            <button class="pkg-tab" onclick="switchPkg(this,'p2')">Package 2</button>
+            <button class="pkg-tab" onclick="switchPkg(this,'p3')">Pro Package</button>
+          </div>
+          <div id="p1" class="pkg-content active">
+            <div class="pkg-item">Machine only — mount to your existing pedestal</div>
+            <div class="pkg-item">All standard tooling arms included</div>
+            <div class="pkg-item">Perfect for established shops</div>
+          </div>
+          <div id="p2" class="pkg-content">
+            <div class="pkg-item">Everything in Package 1</div>
+            <div class="pkg-item">Heavy-duty powder-coated pedestal</div>
+            <div class="pkg-item">LED work lighting</div>
+          </div>
+          <div id="p3" class="pkg-content">
+            <div class="pkg-item">Everything in Package 2</div>
+            <div class="pkg-item">8" contact wheel (billet aluminum, urethane)</div>
+            <div class="pkg-item">Small wheel attachment (5/16" to 3")</div>
+            <div class="pkg-item">Tool storage &amp; organization system</div>
+          </div>
+        </div>
+
+        <div class="flagship-btns" style="margin-top:2rem;">
+          <a href="#" class="btn btn-fire">Pre-Order Now &nbsp;→</a>
+          <a href="#" class="btn btn-steel">Full Specs &amp; Options</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PRODUCTS GRID ═══════ -->
+<section class="section section-dark">
+  <div class="wrap">
+    <div class="section-head split sr">
+      <div>
+        <span class="eyebrow">Catalog</span>
+        <h2 class="section-title">Popular Products</h2>
+      </div>
+      <a href="#" class="btn btn-steel">View All Products</a>
+    </div>
+    <div class="prod-grid sr">
+
+      <a href="#" class="prod-card">
+        <span class="pill pill-usa">USA Made</span>
+        <div class="prod-img-wrap">
+          <img class="prod-img" src="https://hardcoregrinderproducts.com/cdn/shop/files/12_Disc_Grinder_3.heic?v=1749844518&width=600" alt="12 Disc Grinder" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Disc Grinder</div>
+          <div class="prod-name">12" Disc Grinder</div>
+          <div class="prod-foot">
+            <span class="prod-price">$2,999</span>
+            <button class="prod-add">+ Add</button>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="prod-card">
+        <span class="pill pill-heat">Pre-Order</span>
+        <div class="prod-img-wrap">
+          <img class="prod-img" src="https://hardcoregrinderproducts.com/cdn/shop/files/9-disc-grinder-860428.jpg?v=1716910351&width=600" alt="9 Disc Grinder" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Disc Grinder</div>
+          <div class="prod-name">9" Disc Grinder</div>
+          <div class="prod-foot">
+            <span class="prod-price">$2,499</span>
+            <button class="prod-add">+ Add</button>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="prod-card">
+        <span class="pill pill-usa">USA Made</span>
+        <div class="prod-img-wrap">
+          <img class="prod-img" src="https://hardcoregrinderproducts.com/cdn/shop/files/angle-setter-937708.jpg?v=1716917655&width=600" alt="Angle Setter" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Tooling</div>
+          <div class="prod-name">Angle Setter</div>
+          <div class="prod-foot">
+            <span class="prod-price">$160</span>
+            <button class="prod-add">+ Add</button>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="prod-card">
+        <span class="pill pill-usa">USA Made</span>
+        <div class="prod-img-wrap">
+          <img class="prod-img" src="https://hardcoregrinderproducts.com/cdn/shop/files/back-up-platen-161218.jpg?v=1739996175&width=600" alt="Back Up Platen" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Attachment</div>
+          <div class="prod-name">Back-Up Platen Attachment</div>
+          <div class="prod-foot">
+            <span class="prod-price">$235</span>
+            <button class="prod-add">+ Add</button>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="prod-card">
+        <div class="prod-img-wrap">
+          <img class="prod-img" src="https://hardcoregrinderproducts.com/cdn/shop/files/blade-grinding-fixture-937708.jpg?v=1716917655&width=600" alt="Blade Grinding Fixture" loading="lazy" onerror="this.src='https://hardcoregrinderproducts.com/cdn/shop/files/belt-hanging-spools-795721.jpg?v=1716917658&width=600'">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Tooling</div>
+          <div class="prod-name">Blade Grinding Fixture</div>
+          <div class="prod-foot">
+            <span class="prod-price">$TBD</span>
+            <button class="prod-add">+ Add</button>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="prod-card">
+        <span class="pill pill-sold">Sold Out</span>
+        <div class="prod-img-wrap">
+          <img class="prod-img" src="https://hardcoregrinderproducts.com/cdn/shop/files/9-disc-657741.jpg?v=1716909844&width=600" alt="9 Disc" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Disc</div>
+          <div class="prod-name">9" Disc (Replacement)</div>
+          <div class="prod-foot">
+            <span class="prod-price">$120</span>
+            <button class="prod-add">Notify</button>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="prod-card">
+        <div class="prod-img-wrap">
+          <img class="prod-img" src="https://hardcoregrinderproducts.com/cdn/shop/files/belt-hanging-spools-795721.jpg?v=1716917658&width=600" alt="Belt Hanging Spools" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Accessories</div>
+          <div class="prod-name">Belt Hanging Spools</div>
+          <div class="prod-foot">
+            <span class="prod-price">From $32</span>
+            <button class="prod-add">+ Add</button>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="prod-card">
+        <span class="pill pill-usa">USA Made</span>
+        <div class="prod-img-wrap">
+          <img class="prod-img" src="https://hardcoregrinderproducts.com/cdn/shop/files/9-disc-attachment-for-bga-275308.jpg?v=1739996176&width=600" alt="9 Disc BGA Attachment" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">BGA Accessories</div>
+          <div class="prod-name">9" Disc Attachment for BGA</div>
+          <div class="prod-foot">
+            <span class="prod-price">$475</span>
+            <button class="prod-add">+ Add</button>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ WHY HARDCORE ═══════ -->
+<section class="section section-mid">
+  <div class="wrap">
+    <div class="why-wrap sr">
+      <div class="why-visual">
+        <img src="https://hardcoregrinderproducts.com/cdn/shop/files/QC-GRINDER-LARGE.jpg?v=1712679839&width=900" alt="Hardcore Grinder in action" loading="lazy">
+        <div class="why-visual-tag">
+          <span class="why-tag-n">30+</span>
+          <span class="why-tag-l">Years Making</span>
+        </div>
+      </div>
+      <div class="why-text">
+        <span class="eyebrow">Why Choose Hardcore</span>
+        <h2 class="section-title" style="margin-top:.6rem;">Built Once.<br>Built Right.</h2>
+        <p class="why-intro">"Once you have our tooling in your shop, you'll wonder how you ever got along without it."</p>
+        <div class="feats">
+          <div class="feat">
+            <div class="feat-ico">⚡</div>
+            <div>
+              <div class="feat-title">Baldor Motor Power</div>
+              <div class="feat-desc">1.5–2 HP Baldor motors in 110V or 220V. Industrial-grade performance trusted by professional shops for decades.</div>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-ico">⚙️</div>
+            <div>
+              <div class="feat-title">Quick-Change Tooling</div>
+              <div class="feat-desc">Single-handle release swaps tooling arms in seconds. No wrenches. No fumbling. More time grinding, less time fussing.</div>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-ico">🔩</div>
+            <div>
+              <div class="feat-title">Billet Aluminum Construction</div>
+              <div class="feat-desc">Cast and billet aluminum throughout. Machined to tight tolerances at our Chino, CA shop — not off-shore stamped steel.</div>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-ico">👤</div>
+            <div>
+              <div class="feat-title">Josh Picks Up the Phone</div>
+              <div class="feat-desc">Real customer service from the guy who builds the machines. Reviews call him out by name. That's not an accident.</div>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-ico">🇺🇸</div>
+            <div>
+              <div class="feat-title">Made in the USA — Period</div>
+              <div class="feat-desc">Every grinder designed, machined, and assembled in Chino, California. Supporting American manufacturing since 1990.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ JOSH'S STORY ═══════ -->
+<section class="story section section-deep">
+  <div class="wrap">
+    <div class="story-grid sr">
+      <div class="story-text">
+        <span class="eyebrow">The Man Behind the Machine</span>
+        <h2 class="section-title" style="margin-top:.6rem;">Built by a<br>Maker,<br>for Makers.</h2>
+        <blockquote class="quote">
+          "I've spent 30 years at the CAD screen and the grinding bench. I built these machines because the tools I needed didn't exist yet."
+        </blockquote>
+        <p>Josh has been designing, machining, and knife making since before most of the grinder brands you know were founded. <strong>Hardcore Grinders is built on that same obsessive attention to detail</strong> — every knob, every bearing, every shaft tolerance chosen deliberately.</p>
+        <p>When you buy from Hardcore, you're not getting a warehouse box from a reseller. You're getting a machine personally overseen by the engineer who designed it, shipped from the shop where it was built.</p>
+        <p><strong>Questions about your order?</strong> Josh's number is on every page. He answers it.</p>
+        <div style="margin-top:2rem;">
+          <a href="#" class="btn btn-heat">Read Our Full Story &nbsp;→</a>
+        </div>
+      </div>
+      <div class="story-side">
+        <div class="story-stat-box">
+          <div class="ssn">30<em>+</em></div>
+          <div class="ssl">Years of CAD &amp; Manufacturing Expertise</div>
+        </div>
+        <div class="story-stat-box">
+          <div class="ssn">100<em>%</em></div>
+          <div class="ssl">USA Designed, Machined &amp; Assembled</div>
+        </div>
+        <div class="story-stat-box">
+          <div class="ssn">5<em>★</em></div>
+          <div class="ssl">Average Rating · Customers Name Josh by Name</div>
+        </div>
+        <div class="story-stat-box">
+          <div class="ssn">1<em>:1</em></div>
+          <div class="ssl">Direct Access to Josh for Every Order</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ COMPETITOR COMPARE ═══════ -->
+<section class="compare section section-dark">
+  <div class="wrap">
+    <div class="section-head sr">
+      <span class="eyebrow">How We Stack Up</span>
+      <h2 class="section-title">Hardcore vs. The Rest</h2>
+      <p style="font-family:var(--ss);font-size:.95rem;color:var(--chrome);margin-top:1rem;max-width:580px;line-height:1.7;">We're not afraid of comparisons. Here's how Hardcore Grinders measures up against the main alternatives.</p>
+    </div>
+    <div class="sr" style="overflow-x:auto;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Hardcore Grinders</th>
+            <th>Beaumont / KMG</th>
+            <th>HouseMade</th>
+            <th>Burr King</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Made in USA</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="partial">DIY Kit</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Fully Assembled</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗ You Build It</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Quick-Change Tooling</td>
+            <td><span class="check">✓ Single Handle</span></td>
+            <td><span class="partial">Limited</span></td>
+            <td><span class="partial">Add-On</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>Billet Aluminum Frame</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="partial">Partial</span></td>
+            <td><span class="partial">Partial</span></td>
+            <td><span class="cross">Steel Only</span></td>
+          </tr>
+          <tr>
+            <td>Knife-Maker Focused</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="partial">Industrial</span></td>
+          </tr>
+          <tr>
+            <td>Direct Founder Contact</td>
+            <td><span class="check">✓ Josh's #</span></td>
+            <td><span class="partial">Support Team</span></td>
+            <td><span class="check">✓ Brian</span></td>
+            <td><span class="cross">Corporate</span></td>
+          </tr>
+          <tr>
+            <td>In-House CNC Machining</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="partial">Unknown</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Starting Price</td>
+            <td><span style="color:var(--heat);font-family:var(--os);font-weight:600;">$2,499</span></td>
+            <td><span style="color:var(--chrome);">$2,800+</span></td>
+            <td><span style="color:var(--chrome);">$1,575 (DIY Kit)</span></td>
+            <td><span style="color:var(--chrome);">$3,000+</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="#" class="btn btn-fire">See Full Comparison &nbsp;→</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ TESTIMONIALS ═══════ -->
+<section class="testi section section-mid">
+  <div class="wrap">
+    <div class="section-head split sr">
+      <div>
+        <span class="eyebrow">What Makers Say</span>
+        <h2 class="section-title">Built on Trust</h2>
+      </div>
+      <a href="#" class="btn btn-steel">Read All Reviews</a>
+    </div>
+    <div class="review-grid sr">
+
+      <div class="review-card featured">
+        <div>
+          <div class="stars">★★★★★</div>
+          <p class="review-body">Best products your money can buy hands down. When a product has a quality fit and finish you know the people making it care about all the details. The toggle switch is super high quality. The tension and tracking knobs operate silky smooth, almost ball-bearing-like. I'm very impressed and I'm convinced you cannot find a higher quality manufacturer.</p>
+        </div>
+        <div class="review-foot" style="align-self:flex-end;min-width:200px;">
+          <div class="rev-av">SM</div>
+          <div class="rev-meta">
+            <span class="rev-name">Steve Marsa</span>
+            <span class="rev-prod">BGB 6"×60" Belt Grinder · Jan 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-body">I love this machine! It runs so smooth. Dead nuts accurate vertically and horizontally. Josh was very helpful with the sale and delivery. Made buying a pleasure.</p>
+        <div class="review-foot">
+          <div class="rev-av">RM</div>
+          <div class="rev-meta">
+            <span class="rev-name">Robert Mitchell</span>
+            <span class="rev-prod">12" Disc Grinder · Nov 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-body">The QC grinder is an absolute masterpiece. From its solid billet aluminum construction to the precision of its variable speed motor, every detail exudes excellence. It's a game-changer in my workshop.</p>
+        <div class="review-foot">
+          <div class="rev-av">SB</div>
+          <div class="rev-meta">
+            <span class="rev-name">Sadie Barnum</span>
+            <span class="rev-prod">QC 2"×72" Belt Grinder · May 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-body">We run this machine six days a week. Like all Hardcore products it runs smooth and quiet and is engineered to the highest standards of any equipment we've owned. Over 2,000 hours — not one failure.</p>
+        <div class="review-foot">
+          <div class="rev-av">MH</div>
+          <div class="rev-meta">
+            <span class="rev-name">M.H. — Bitterroot Handle Works</span>
+            <span class="rev-prod">BGB 6"×60" Belt Grinder · Jun 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-body">Purchased this grinder for my welding shop. Packaged professionally on a crate. Josh was great to work with! Buy once with this belt grinder. Quality you can feel from the moment you unbox it.</p>
+        <div class="review-foot">
+          <div class="rev-av">ML</div>
+          <div class="rev-meta">
+            <span class="rev-name">Maritime Fabrication LLC</span>
+            <span class="rev-prod">BGB + Pedestal · Jan 2025</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ USA BAND ═══════ -->
+<div class="usa-band">
+  <div class="wrap">
+    <div class="usa-inner">
+      <div class="usa-text">
+        <h2>Proudly<br>Made in<br>America.</h2>
+        <p>Every grinder designed, machined, and assembled in Chino, California. When you buy Hardcore, you're investing in American manufacturing — and getting a machine built to last a lifetime.</p>
+        <div style="margin-top:2rem;">
+          <a href="#" class="btn" style="background:rgba(0,0,0,.2);color:#fff;padding:.9rem 2rem;clip-path:none;border:1px solid rgba(255,255,255,.3);">Our Manufacturing Process →</a>
+        </div>
+      </div>
+      <div class="usa-divider"></div>
+      <div class="usa-facts">
+        <div class="usa-fact-box">
+          <div class="ufn">100%</div>
+          <div class="ufl">USA Manufactured</div>
+        </div>
+        <div class="usa-fact-box">
+          <div class="ufn">30+</div>
+          <div class="ufl">Years in Business</div>
+        </div>
+        <div class="usa-fact-box">
+          <div class="ufn">Chino</div>
+          <div class="ufl">California Shop</div>
+        </div>
+        <div class="usa-fact-box">
+          <div class="ufn">Zero</div>
+          <div class="ufl">Offshore Components</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ NEWSLETTER ═══════ -->
+<div class="nl">
+  <div class="wrap">
+    <div class="nl-inner">
+      <div class="nl-text">
+        <h3>Stay in the Loop</h3>
+        <p>New products, restock alerts, and shop tips from Josh. No spam — ever.</p>
+      </div>
+      <div class="nl-form">
+        <input class="nl-input" type="email" placeholder="your@email.com">
+        <button class="nl-go">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="#" class="logo" style="display:inline-flex;">
+        <div class="logo-mark">
+          <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:#fff;"><path d="M12 2L3 7v10l9 5 9-5V7L12 2zm0 2.5l6.5 3.6v7.8L12 19.5l-6.5-3.6V8.1L12 4.5z"/></svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-main" style="font-size:1.2rem;">Hardcore<span style="color:var(--forge);">.</span></span>
+          <span class="logo-sub">Grinders &amp; Products</span>
+        </div>
+      </a>
+      <p class="footer-brand-desc">USA-made belt grinders, disc grinders, and precision tooling for knife makers and fabricators. Built in Chino, California since 1990.</p>
+      <div class="footer-contact">
+        <a href="tel:9096273737">📞 (909) 627-3737</a>
+        <a href="mailto:Josh@hardcoregrinderproducts.com">✉ Josh@hardcoregrinderproducts.com</a>
+        <a href="#">📍 13861 Oaks Ave. Chino, CA 91710</a>
+      </div>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/Hardcoregrinders" class="soc-btn" title="Facebook">f</a>
+        <a href="https://www.instagram.com/hardcore_products/" class="soc-btn" title="Instagram">ig</a>
+        <a href="https://www.tiktok.com/@hardcore_products" class="soc-btn" title="TikTok">tt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">QC Belt Grinders</a></li>
+        <li><a href="#">BGA / BGB Grinders</a></li>
+        <li><a href="#">Disc Grinders</a></li>
+        <li><a href="#">Knifemaker Tooling</a></li>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="#">Replacement Parts</a></li>
+        <li><a href="#">Gift Cards</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Josh</a></li>
+        <li><a href="#">Our Manufacturing</a></li>
+        <li><a href="#">CNC Machine Work</a></li>
+        <li><a href="#">Compare Grinders</a></li>
+        <li><a href="#">Downloadable Manuals</a></li>
+        <li><a href="#">Blog &amp; Resources</a></li>
+        <li><a href="#">Testimonials</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Contact Josh</a></li>
+        <li><a href="#">Order Status</a></li>
+        <li><a href="#">Shipping Info</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Hardcore Machining Inc. · Chino, CA · hardcoregrinderproducts.com</span>
+    <div class="footer-payments">
+      <span class="pay-badge">Visa</span>
+      <span class="pay-badge">MC</span>
+      <span class="pay-badge">Amex</span>
+      <span class="pay-badge">Apple Pay</span>
+      <span class="pay-badge">Shop Pay</span>
+      <span class="pay-badge">PayPal</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Package tab switcher
+function switchPkg(btn, id) {
+  document.querySelectorAll('.pkg-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.pkg-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+// Filter buttons
+document.querySelectorAll('.f-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('on'));
+    this.classList.add('on');
+  });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.sr').forEach(el => observer.observe(el));
+
+// Hero entrance
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    document.querySelector('.hero-content')?.classList.add('vis');
+  }, 100);
+});
+</script>
+</body>
+</html>
